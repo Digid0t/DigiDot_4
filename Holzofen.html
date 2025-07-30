@@ -26,7 +26,6 @@
             line-height: 1.6;
             color: var(--dark-color);
             background-color: #1fd35eaa;
-            position: relative;
             overflow-x: hidden;
         }
 
@@ -35,21 +34,20 @@
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: rgb(164, 239, 146);
             padding: 1rem 0;
-            position: center;
+            position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: var(--card-shadow);
         }
 
         .header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative; /* Diese Zeile hinzufügen */
-}
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
         .logo-container {
             display: flex;
@@ -58,8 +56,8 @@
         }
 
         .logo {
-            width: 160px;
-            height: 160px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: rgb(160, 241, 159);
             padding: 5px;
@@ -72,14 +70,9 @@
         }
 
         h1 {
-    position: absolute; /* Aus dem Layout-Fluss nehmen */
-    left: 50%;          /* Horizontale Mitte ansteuern */
-    top: 50%;           /* Vertikale Mitte ansteuern */
-    transform: translate(-50%, -50%); /* Exakt zentrieren */
-    margin: 0;          /* Mögliche Außenabstände entfernen */
-    font-size: 1.8rem;  /* Schriftgröße beibehalten */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Schatten beibehalten */
-}
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
 
         nav ul {
             list-style: none;
@@ -88,7 +81,7 @@
         }
 
         nav a {
-            color: rgb(0, 0, 0);
+            color: rgb(160, 241, 159);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -639,7 +632,7 @@
     <section class="hero" id="home">
         <div class="hero-content">
             
-            
+            <p>Die besten Döner in Gotha - Ost - Frisch, Lecker, Anders!</p>
             <a href="#menu" class="cta-button">Jetzt Menü entdecken</a>
         </div>
     </section>
@@ -1721,4 +1714,4 @@
         });
     </script>
 </body>
-</html>
+</html>```
