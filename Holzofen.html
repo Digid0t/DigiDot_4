@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adams Laden - Dein Burger Paradise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #dd9c10e3;
+            --dark-color: #2c3e50;
+            --light-color: #b5dcc4;
+            --success-color: #116f38;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #1fd35eaa;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: rgb(164, 239, 146);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--card-shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgb(160, 241, 159);
+            padding: 5px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: rgb(160, 241, 159);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: rgb(92, 217, 115);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: rgb(131, 231, 107);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://raw.githubusercontent.com/Digid0t/DigiDot_4/main/adam_haus.png') center/cover;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(94, 213, 98);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: rgba(253, 253, 253, 0.524);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .cta-button:hover {
+            background: var(--primary-color);
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-2px);
+            animation: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Menu Section */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1.5rem;
+            background: rgb(241, 231, 210);
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary-color);
+            color: rgb(232, 249, 191);
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item {
+            background: rgba(216, 234, 177, 0.976);
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .menu-item-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: rgb(235, 235, 235);
+            padding: 1rem;
+        }
+
+        .menu-item-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-body {
+            padding: 1rem;
+        }
+
+        .menu-item-description {
+            color: #434343;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .price-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .menu-price {
+            font-size: 1rem;
+            color: var(--success-color);
+        }
+
+        .options {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #43280100;
+        }
+
+        .options h4 {
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .sauce-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .sauce-tag {
+            background: #d1a7458e;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .allergens {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(175, 104, 23, 0.381);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-color);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .menu-categories {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                font-size: 0.9rem;
+                padding: 0.4rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .price-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Allergene Legend */
+        .allergen-legend {
+            background: #b2e767;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .allergen-legend h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .allergen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .allergen-item {
+            color: #666;
+        }
+
+        /* Animation for menu items */
+        .menu-item {
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+        .menu-item:nth-child(7) { animation-delay: 0.7s; }
+        .menu-item:nth-child(8) { animation-delay: 0.8s; }
+        .menu-item:nth-child(n+9) { animation-delay: 0.9s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Lade Menü...</p>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/Digid0t/DigiDot_4/main/Adam_img.png" alt="Adams Laden Logo" class="logo">
+                <h1>Willkommen bei Adams Holz Ofen</h1>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#offers">Angebote</a></li>
+                    <li><a href="#menu">Menü</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            
+            <p>Die besten Döner in Gotha - Ost - Frisch, Lecker, Anders!</p>
+            <a href="#menu" class="cta-button">Jetzt Menü entdecken</a>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="offers" style="background: #6fdd7cb7; padding: 2rem 1rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">🔥 Aktuelle Angebote</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div style="background: rgb(236, 237, 202); padding: 1.5rem; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Montag = Burger Tag</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Alle Burger 20% günstiger!</p>
+                </div>
+                <div style="background: rgb(247, 245, 203); padding: 1.5rem; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Happy Hour</h3>
+                    <p style="font-size: 0.9rem; color: #666;">15-17 Uhr: Alle Getränke -30%</p>
+                </div>
+                <div style="background: rgb(245, 243, 204); padding: 1.5rem; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Family Sunday</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Kids Menü nur 4,90€</p>
+                </div>
+                <div style="background: rgb(238, 245, 205); padding: 1.5rem; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Studenten-Rabatt</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Mit Ausweis 15% auf alles!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-title">Unser Menü</h2>
+
+        <div class="menu-categories">
+            <button class="category-btn active" onclick="filterMenu('all')">Alle</button>
+            <button class="category-btn" onclick="filterMenu('doener')">Döner</button>
+            <button class="category-btn" onclick="filterMenu('burger')">Burger</button>
+            <button class="category-btn" onclick="filterMenu('chicken')">Chicken</button>
+            <button class="category-btn" onclick="filterMenu('sides')">Beilagen</button>
+            <button class="category-btn" onclick="filterMenu('specials')">Specials</button>
+            <button class="category-btn" onclick="filterMenu('desserts')">Desserts</button>
+            <button class="category-btn" onclick="filterMenu('drinks')">Getränke</button>
+        </div>
+
+        <div class="menu-grid" id="menu-container">
+            <!-- Menu items will be loaded here dynamically -->
+        </div>
+
+        <div class="allergen-legend">
+            <h3>Zusatzstoffe & Allergene</h3>
+            <div class="allergen-grid" id="allergen-legend">
+                <!-- Allergen legend will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Kontakt & Öffnungszeiten</h2>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Adresse</h3>
+                <p id="address">Wird geladen...</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Telefon</h3>
+                <p><a href="tel:+491234567890" id="phone">Wird geladen...</a></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Öffnungszeiten</h3>
+                <p id="hours">Wird geladen...</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>E-Mail</h3>
+                <p><a href="mailto:info@adamsladen.de" id="email">Wird geladen...</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Adams Laden. Alle Rechte vorbehalten.</p>
+            <p>Mit ❤️ gemacht für die besten Burger-Fans</p>
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JSON STRUCTURE DOCUMENTATION:
+        // To use external JSON file, create 'adams-menu.json' with this structure:
+        // {
+        //   "doener": [...],
+        //   "burgers": [...],
+        //   "chicken": [...],
+        //   "sides": [...],
+        //   "desserts": [...],
+        //   "drinks": [...],
+        //   "specials": [...],
+        //   "allergenLegend": {...},
+        //   "additiveLegend": {...},
+        //   "contact": {...}
+        // }
+
+        // Vollständiges Menü mit ALLEN Produkten
+        let menuData = {
+            doener: [
+                {
+                    name: "Döner (Hänchen oder Putenfleisch)",
+                    description: "Saftiges Fleisch vom Spieß, frisches Gemüse und würzige Soße im knusprigen Fladenbrot – der Döner ist ein echter Genussklassiker",
+                    price: 6.00,
+                    menuPrice: 11,
+                    ingredients: "Dönerfleisch, Salat, Zwiebeln, Tomate, Soße",
+                    sauces: ["Knoblauch", "Coctail", "Jogurt"],
+                    extras: [
+                        { name: "Exrta Zutat", price: 0.50 },
+                    ],
+                    allergens: "a,g,j,k",
+                    additives: "2,4" ,
+                    category: "doener"
+                }
+            ],
+            burgers: [
+                {
+
+                    name: "Classic Burger",
+                    description: "Der Klassiker mit saftigem Rindfleisch-Patty",
+                    price: 8.90,
+                    menuPrice: 12.90,
+                    ingredients: "Rindfleisch-Patty (180g), Brioche-Bun, Salat, Tomate, Zwiebel, Gurke",
+                    sauces: ["Ketchup", "Mayo", "Senf", "BBQ-Sauce", "Burger-Sauce"],
+                    extras: [
+                        { name: "Extra Käse", price: 1.50 },
+                        { name: "Bacon", price: 2.00 },
+                        { name: "Extra Patty", price: 3.50 },
+                        { name: "Jalapeños", price: 1.00 }
+                    ],
+                    allergens: "a,c,f,g,j,k",
+                    additives: "1,2,3",
+                    category: "burger"
+                },
+                {
+                    name: "Cheese Burger",
+                    description: "Mit doppelt Cheddar-Käse für Käseliebhaber",
+                    price: 9.90,
+                    menuPrice: 13.90,
+                    ingredients: "Rindfleisch-Patty (180g), Doppelt Cheddar, Brioche-Bun, Salat, Tomate, Zwiebel",
+                    sauces: ["Ketchup", "Mayo", "Senf", "Burger-Sauce", "Ranch-Sauce"],
+                    extras: [
+                        { name: "Extra Käse", price: 1.50 },
+                        { name: "Bacon", price: 2.00 },
+                        { name: "Karamellisierte Zwiebeln", price: 1.50 }
+                    ],
+                    allergens: "a,c,f,g,j,k",
+                    additives: "1,2,3,7",
+                    category: "burger"
+                },
+                {
+
+                    name: "Bacon Burger",
+                    description: "Knuspriger Bacon trifft auf saftiges Rindfleisch",
+                    price: 10.90,
+                    menuPrice: 14.90,
+                    ingredients: "Rindfleisch-Patty (180g), Bacon (3 Scheiben), Cheddar, Brioche-Bun, Salat, Tomate",
+                    sauces: ["BBQ-Sauce", "Mayo", "Bacon-Jam", "Smokey-Sauce"],
+                    extras: [
+                        { name: "Extra Bacon", price: 2.00 },
+                        { name: "Extra Käse", price: 1.50 },
+                        { name: "Spiegelei", price: 1.50 }
+                    ],
+                    allergens: "a,c,f,g,j,k",
+                    additives: "1,2,3,4,7",
+                    category: "burger"
+                },
+                {
+                    name: "BBQ Bacon Deluxe",
+                    description: "Der ultimative BBQ-Burger mit Röstzwiebeln",
+                    price: 12.90,
+                    menuPrice: 16.90,
+                    ingredients: "Rindfleisch-Patty (200g), Bacon, Cheddar, Röstzwiebeln, Brioche-Bun, Coleslaw",
+                    sauces: ["BBQ-Sauce", "Smokey-Mayo", "Ranch-Sauce"],
+                    extras: [
+                        { name: "Extra Patty", price: 3.50 },
+                        { name: "Extra Bacon", price: 2.00 },
+                        { name: "Jalapeños", price: 1.00 }
+                    ],
+                    allergens: "a,c,f,g,j,k,l",
+                    additives: "1,2,3,4,5,7",
+                    category: "burger"
+                },
+                {
+                    name: "Crispy Chicken Burger",
+                    description: "Knusprig paniertes Hähnchen im Brioche-Bun",
+                    price: 9.50,
+                    menuPrice: 13.50,
+                    ingredients: "Paniertes Hähnchenbrustfilet (180g), Brioche-Bun, Salat, Tomate, Coleslaw",
+                    sauces: ["Mayo", "Sweet-Chili", "Honey-Mustard", "Ranch-Sauce"],
+                    extras: [
+                        { name: "Extra Käse", price: 1.50 },
+                        { name: "Bacon", price: 2.00 },
+                        { name: "Avocado", price: 2.00 }
+                    ],
+                    allergens: "a,c,f,g,j",
+                    additives: "1,2,3,7",
+                    category: "burger"
+                },
+                {
+                    name: "Spicy Chicken Burger",
+                    description: "Scharf gewürztes Hähnchen für Mutige",
+                    price: 10.50,
+                    menuPrice: 14.50,
+                    ingredients: "Scharf paniertes Hähnchenbrustfilet, Brioche-Bun, Jalapeños, Salat, Tomate",
+                    sauces: ["Spicy-Mayo", "Sriracha", "Chipotle-Sauce", "Ranch-Sauce"],
+                    extras: [
+                        { name: "Extra Jalapeños", price: 1.00 },
+                        { name: "Pepper-Jack Käse", price: 1.50 },
+                        { name: "Guacamole", price: 2.50 }
+                    ],
+                    allergens: "a,c,f,g,j",
+                    additives: "1,2,3,4,7",
+                    category: "burger"
+                },
+                {
+                    name: "Fish Burger",
+                    description: "Knusprig paniertes Seelachsfilet",
+                    price: 8.90,
+                    menuPrice: 12.90,
+                    ingredients: "Paniertes Seelachsfilet, Brioche-Bun, Salat, Remoulade",
+                    sauces: ["Remoulade", "Tartarsauce", "Dill-Mayo"],
+                    extras: [
+                        { name: "Extra Käse", price: 1.50 },
+                        { name: "Zwiebeln", price: 0.50 }
+                    ],
+                    allergens: "a,c,d,f,g,j",
+                    additives: "1,2,3",
+                    category: "burger"
+                },
+                {
+                    name: "Veggie Deluxe",
+                    description: "Vegetarischer Genuss mit gegrilltem Halloumi",
+                    price: 8.50,
+                    menuPrice: 12.50,
+                    ingredients: "Halloumi-Käse (150g), Grillgemüse, Brioche-Bun, Rucola, Tomaten",
+                    sauces: ["Tzatziki", "Sweet-Chili", "Hummus", "Pesto"],
+                    extras: [
+                        { name: "Extra Halloumi", price: 2.50 },
+                        { name: "Avocado", price: 2.00 },
+                        { name: "Falafel", price: 2.00 }
+                    ],
+                    allergens: "a,c,g",
+                    additives: "7",
+                    category: "burger"
+                },
+                {
+                    name: "Vegan Burger",
+                    description: "100% pflanzlich mit Beyond Meat Patty",
+                    price: 11.90,
+                    menuPrice: 15.90,
+                    ingredients: "Beyond Meat Patty, Vollkorn-Bun, Salat, Tomate, Zwiebel, veganer Käse",
+                    sauces: ["Vegane Mayo", "Ketchup", "Senf", "BBQ-Sauce"],
+                    extras: [
+                        { name: "Extra Patty", price: 4.00 },
+                        { name: "Avocado", price: 2.00 },
+                        { name: "Karamellisierte Zwiebeln", price: 1.50 }
+                    ],
+                    allergens: "a,f,j,k",
+                    additives: "1,2",
+                    category: "burger"
+                },
+                {
+                    name: "Pulled Pork Burger",
+                    description: "Zartes Pulled Pork mit Coleslaw",
+                    price: 11.90,
+                    menuPrice: 15.90,
+                    ingredients: "Pulled Pork (200g), Brioche-Bun, Coleslaw, Röstzwiebeln",
+                    sauces: ["BBQ-Sauce", "Smokey-Mayo", "Carolina-Sauce"],
+                    extras: [
+                        { name: "Extra Pulled Pork", price: 3.00 },
+                        { name: "Jalapeños", price: 1.00 },
+                        { name: "Käse", price: 1.50 }
+                    ],
+                    allergens: "a,c,f,g,j,l",
+                    additives: "1,2,3,4,5",
+                    category: "burger"
+                },
+                {
+                    name: "Double Trouble",
+                    description: "Doppelter Genuss mit zwei Rindfleisch-Pattys",
+                    price: 13.90,
+                    menuPrice: 17.90,
+                    ingredients: "2x Rindfleisch-Patty (je 150g), Doppelt Käse, Brioche-Bun, Salat, Tomate, Zwiebel",
+                    sauces: ["Burger-Sauce", "BBQ-Sauce", "Mayo", "Ketchup"],
+                    extras: [
+                        { name: "Bacon", price: 2.00 },
+                        { name: "Extra Käse", price: 1.50 },
+                        { name: "Drittes Patty", price: 3.50 }
+                    ],
+                    allergens: "a,c,f,g,j,k",
+                    additives: "1,2,3,7",
+                    category: "burger"
+                },
+                {
+                    name: "Truffle Burger",
+                    description: "Luxus-Burger mit Trüffel-Mayo",
+                    price: 14.90,
+                    menuPrice: 18.90,
+                    ingredients: "Premium Rindfleisch-Patty (200g), Trüffel-Mayo, Gruyère-Käse, Rucola, Brioche-Bun",
+                    sauces: ["Trüffel-Mayo", "Dijon-Senf"],
+                    extras: [
+                        { name: "Extra Trüffel-Mayo", price: 2.00 },
+                        { name: "Spiegelei", price: 1.50 }
+                    ],
+                    allergens: "a,c,f,g,j",
+                    additives: "7",
+                    category: "burger"
+                }
+            ],
+            chicken: [
+                {
+                    name: "Chicken Nuggets (6 Stück)",
+                    description: "Knusprig panierte Hähnchenstücke",
+                    price: 5.90,
+                    menuPrice: 9.90,
+                    sauces: ["Sweet-Sour", "BBQ", "Curry", "Mayo"],
+                    allergens: "a,c,f",
+                    additives: "2,g",
+                    category: "chicken"
+                },
+                {
+                    name: "Chicken Nuggets (9 Stück)",
+                    description: "Knusprig panierte Hähnchenstücke",
+                    price: 7.90,
+                    menuPrice: 11.90,
+                    sauces: ["Sweet-Sour", "BBQ", "Curry", "Mayo"],
+                    allergens: "a,c,f",
+                    additives: "2,g",
+                    category: "chicken"
+                },
+                {
+                    name: "Chicken Wings (6 Stück)",
+                    description: "Würzige Hähnchenflügel",
+                    price: 6.90,
+                    menuPrice: 10.90,
+                    sauces: ["BBQ", "Hot Buffalo", "Honey-Garlic", "Ranch"],
+                    allergens: "f,g",
+                    additives: "1,2,4",
+                    category: "chicken"
+                },
+                {
+                    name: "Chicken Wings (12 Stück)",
+                    description: "Würzige Hähnchenflügel für Hungrige",
+                    price: 11.90,
+                    menuPrice: 15.90,
+                    sauces: ["BBQ", "Hot Buffalo", "Honey-Garlic", "Ranch"],
+                    allergens: "f,g",
+                    additives: "1,2,4",
+                    category: "chicken"
+                },
+                {
+                    name: "Chicken Tenders (3 Stück)",
+                    description: "Zarte Hähnchenstreifen paniert",
+                    price: 7.50,
+                    menuPrice: 11.50,
+                    sauces: ["Honey-Mustard", "BBQ", "Ranch", "Spicy-Mayo"],
+                    allergens: "a,c,f,j",
+                    additives: "1,2",
+                    category: "chicken"
+                },
+                {
+                    name: "Popcorn Chicken",
+                    description: "Kleine knusprige Hähnchenbissen",
+                    price: 6.50,
+                    menuPrice: 10.50,
+                    sauces: ["Sweet-Chili", "Curry", "Mayo", "BBQ"],
+                    allergens: "a,c,f",
+                    additives: "2,4",
+                    category: "chicken"
+                }
+            ],
+            sides: [
+                {
+                    name: "Pommes Frites (klein)",
+                    description: "Knusprige goldene Pommes",
+                    price: 2.90,
+                    allergens: "",
+                    additives: "5",
+                    category: "sides"
+                },
+                {
+                    name: "Pommes Frites (groß)",
+                    description: "Knusprige goldene Pommes",
+                    price: 3.90,
+                    allergens: "",
+                    additives: "5",
+                    category: "sides"
+                },
+                {
+                    name: "Süßkartoffel Pommes",
+                    description: "Die gesunde Alternative",
+                    price: 4.50,
+                    allergens: "",
+                    additives: "5",
+                    category: "sides"
+                },
+                {
+                    name: "Curly Fries",
+                    description: "Gewürzte Spiralpommes",
+                    price: 4.50,
+                    allergens: "a",
+                    additives: "4,5",
+                    category: "sides"
+                },
+                {
+                    name: "Onion Rings (8 Stück)",
+                    description: "Knusprig panierte Zwiebelringe",
+                    price: 4.90,
+                    allergens: "a,c,g",
+                    additives: "1,2",
+                    category: "sides"
+                },
+                {
+                    name: "Mozzarella Sticks (6 Stück)",
+                    description: "Panierte Mozzarella-Stangen",
+                    price: 5.90,
+                    sauces: ["Marinara-Sauce"],
+                    allergens: "a,c,g",
+                    additives: "1,2",
+                    category: "sides"
+                },
+                {
+                    name: "Cheese Fries",
+                    description: "Pommes mit geschmolzenem Käse",
+                    price: 5.50,
+                    allergens: "g",
+                    additives: "5,7",
+                    category: "sides"
+                },
+                {
+                    name: "Bacon Cheese Fries",
+                    description: "Pommes mit Käse und Bacon",
+                    price: 6.90,
+                    allergens: "g",
+                    additives: "2,4,5,7",
+                    category: "sides"
+                },
+                {
+                    name: "Coleslaw",
+                    description: "Hausgemachter Krautsalat",
+                    price: 2.90,
+                    allergens: "c,g,j",
+                    additives: "",
+                    category: "sides"
+                },
+                {
+                    name: "Garden Salad",
+                    description: "Frischer gemischter Salat",
+                    price: 4.90,
+                    dressing: ["French", "Italian", "Ranch", "Balsamico"],
+                    allergens: "j",
+                    additives: "",
+                    category: "sides"
+                },
+                {
+                    name: "Caesar Salad",
+                    description: "Mit Parmesan, Croutons und Caesar-Dressing",
+                    price: 6.90,
+                    extras: [
+                        { name: "Grilled Chicken", price: 3.50 },
+                        { name: "Extra Parmesan", price: 1.00 }
+                    ],
+                    allergens: "a,c,d,g",
+                    additives: "7",
+                    category: "sides"
+                },
+                {
+                    name: "Chili Cheese Nuggets (6 Stück)",
+                    description: "Scharfe Käse-Chili-Happen",
+                    price: 4.90,
+                    allergens: "a,c,g",
+                    additives: "1,2,4",
+                    category: "sides"
+                }
+            ],
+            desserts: [
+                {
+                    name: "Brownie",
+                    description: "Warmer Schokoladen-Brownie",
+                    price: 4.50,
+                    extras: [
+                        { name: "Vanilleeis", price: 1.50 },
+                        { name: "Sahne", price: 1.00 }
+                    ],
+                    allergens: "a,c,g,h",
+                    additives: "",
+                    category: "desserts"
+                },
+                {
+                    name: "Cookie Dough",
+                    description: "Warmer Keksteig mit Vanilleeis",
+                    price: 5.90,
+                    allergens: "a,c,g",
+                    additives: "1",
+                    category: "desserts"
+                },
+                {
+                    name: "Cheesecake",
+                    description: "New York Style Käsekuchen",
+                    price: 4.90,
+                    allergens: "a,c,g",
+                    additives: "",
+                    category: "desserts"
+                },
+                {
+                    name: "Apple Pie",
+                    description: "Hausgemachter Apfelkuchen",
+                    price: 4.50,
+                    extras: [
+                        { name: "Vanilleeis", price: 1.50 }
+                    ],
+                    allergens: "a,c,g",
+                    additives: "",
+                    category: "desserts"
+                },
+                {
+                    name: "Milchshake",
+                    description: "Vanille, Schoko oder Erdbeere",
+                    price: 4.90,
+                    flavors: ["Vanille", "Schokolade", "Erdbeere", "Karamell", "Oreo"],
+                    allergens: "g",
+                    additives: "1",
+                    category: "desserts"
+                },
+                {
+                    name: "Eis (3 Kugeln)",
+                    description: "Verschiedene Sorten zur Auswahl",
+                    price: 3.90,
+                    flavors: ["Vanille", "Schokolade", "Erdbeere", "Cookies", "Karamell"],
+                    allergens: "c,g",
+                    additives: "1",
+                    category: "desserts"
+                }
+            ],
+            drinks: [
+                {
+                    name: "Coca Cola",
+                    description: "0,33l / 0,5l",
+                    price: 2.90,
+                    priceLarge: 3.90,
+                    allergens: "",
+                    additives: "4,9",
+                    category: "drinks"
+                },
+                {
+                    name: "Coca Cola Zero",
+                    description: "0,33l / 0,5l",
+                    price: 2.90,
+                    priceLarge: 3.90,
+                    allergens: "",
+                    additives: "4,9",
+                    category: "drinks"
+                },
+                {
+                    name: "Fanta",
+                    description: "Orange - 0,33l / 0,5l",
+                    price: 2.90,
+                    priceLarge: 3.90,
+                    allergens: "",
+                    additives: "1,4",
+                    category: "drinks"
+                },
+                {
+                    name: "Sprite",
+                    description: "0,33l / 0,5l",
+                    price: 2.90,
+                    priceLarge: 3.90,
+                    allergens: "",
+                    additives: "4",
+                    category: "drinks"
+                },
+                {
+                    name: "Mezzo Mix",
+                    description: "0,33l / 0,5l",
+                    price: 2.90,
+                    priceLarge: 3.90,
+                    allergens: "",
+                    additives: "4,9",
+                    category: "drinks"
+                },
+                {
+                    name: "Apfelschorle",
+                    description: "0,33l / 0,5l",
+                    price: 2.90,
+                    priceLarge: 3.90,
+                    allergens: "",
+                    additives: "",
+                    category: "drinks"
+                },
+                {
+                    name: "Orangensaft",
+                    description: "Frisch gepresst - 0,3l",
+                    price: 4.50,
+                    allergens: "",
+                    additives: "",
+                    category: "drinks"
+                },
+                {
+                    name: "Mineralwasser",
+                    description: "Still oder Medium - 0,33l / 0,5l",
+                    price: 2.50,
+                    priceLarge: 3.50,
+                    allergens: "",
+                    additives: "",
+                    category: "drinks"
+                },
+                {
+                    name: "Hausgemachte Limonade",
+                    description: "Zitrone-Minze oder Beeren - 0,4l",
+                    price: 3.90,
+                    allergens: "",
+                    additives: "",
+                    category: "drinks"
+                },
+                {
+                    name: "Eistee",
+                    description: "Pfirsich oder Zitrone - 0,4l",
+                    price: 3.50,
+                    allergens: "",
+                    additives: "4",
+                    category: "drinks"
+                },
+                {
+                    name: "Red Bull",
+                    description: "Energy Drink - 0,25l",
+                    price: 3.90,
+                    allergens: "",
+                    additives: "9",
+                    category: "drinks"
+                },
+                {
+                    name: "Kaffee",
+                    description: "Espresso / Americano / Cappuccino",
+                    price: 2.50,
+                    priceCappuccino: 3.50,
+                    allergens: "g",
+                    additives: "9",
+                    category: "drinks"
+                },
+                {
+                    name: "Latte Macchiato",
+                    description: "Mit aufgeschäumter Milch",
+                    price: 3.90,
+                    allergens: "g",
+                    additives: "9",
+                    category: "drinks"
+                },
+                {
+                    name: "Heiße Schokolade",
+                    description: "Mit Sahne und Marshmallows",
+                    price: 3.50,
+                    allergens: "g",
+                    additives: "",
+                    category: "drinks"
+                },
+                {
+                    name: "Tee",
+                    description: "Verschiedene Sorten",
+                    price: 2.50,
+                    flavors: ["Früchtetee", "Grüner Tee", "Schwarzer Tee", "Kamille", "Pfefferminz"],
+                    allergens: "",
+                    additives: "",
+                    category: "drinks"
+                },
+                {
+                    name: "Bier vom Fass",
+                    description: "Pils 0,3l / 0,5l",
+                    price: 3.50,
+                    priceLarge: 4.90,
+                    allergens: "a",
+                    additives: "",
+                    category: "drinks"
+                },
+                {
+                    name: "Weizenbier",
+                    description: "Hell oder Dunkel - 0,5l",
+                    price: 4.50,
+                    allergens: "a",
+                    additives: "",
+                    category: "drinks"
+                },
+                {
+                    name: "Radler",
+                    description: "Bier mit Zitronenlimonade - 0,5l",
+                    price: 4.50,
+                    allergens: "a",
+                    additives: "",
+                    category: "drinks"
+                }
+            ],
+            specials: [
+                {
+                    name: "Kids Burger",
+                    description: "Kleiner Burger für unsere kleinen Gäste",
+                    price: 5.90,
+                    menuPrice: 7.90,
+                    ingredients: "Mini Rindfleisch-Patty (100g), Mini-Bun, Ketchup",
+                    extras: [
+                        { name: "Käse", price: 1.00 }
+                    ],
+                    allergens: "a,f,g",
+                    additives: "1,2",
+                    category: "specials"
+                },
+                {
+                    name: "Kids Nuggets",
+                    description: "4 Chicken Nuggets mit Pommes",
+                    price: 5.50,
+                    menuPrice: 7.50,
+                    sauces: ["Ketchup", "Mayo"],
+                    allergens: "a,c,f",
+                    additives: "2,g",
+                    category: "specials"
+                },
+                {
+                    name: "Wrap Chicken",
+                    description: "Tortilla mit Hähnchen und frischem Gemüse",
+                    price: 7.90,
+                    menuPrice: 11.90,
+                    ingredients: "Weizentortilla, Grilled Chicken, Salat, Tomate, Käse",
+                    sauces: ["Ranch", "Caesar", "Sweet-Chili"],
+                    allergens: "a,c,g",
+                    additives: "1,2",
+                    category: "specials"
+                },
+                {
+                    name: "Wrap Veggie",
+                    description: "Tortilla mit Grillgemüse",
+                    price: 6.90,
+                    menuPrice: 10.90,
+                    ingredients: "Weizentortilla, Grillgemüse, Salat, Käse, Hummus",
+                    allergens: "a,g,k",
+                    additives: "",
+                    category: "specials"
+                },
+                {
+                    name: "Hot Dog Classic",
+                    description: "Klassischer Hot Dog",
+                    price: 4.90,
+                    menuPrice: 8.90,
+                    ingredients: "Rindswurst, Hot Dog Bun, Röstzwiebeln",
+                    sauces: ["Ketchup", "Senf", "Mayo"],
+                    extras: [
+                        { name: "Käse", price: 1.00 },
+                        { name: "Jalapeños", price: 1.00 }
+                    ],
+                    allergens: "a,j",
+                    additives: "1,2,4",
+                    category: "specials"
+                },
+                {
+                    name: "Chili Dog",
+                    description: "Hot Dog mit hausgemachtem Chili",
+                    price: 6.90,
+                    menuPrice: 10.90,
+                    ingredients: "Rindswurst, Hot Dog Bun, Chili con Carne, Käse",
+                    allergens: "a,g,j",
+                    additives: "1,2,4",
+                    category: "specials"
+                }
+            ],
+            allergenLegend: {
+                "a": "Glutenhaltiges Getreide",
+                "b": "Krebstiere",
+                "c": "Eier",
+                "d": "Fisch",
+                "e": "Erdnüsse",
+                "f": "Sojabohnen",
+                "g": "Milch/Laktose",
+                "h": "Schalenfrüchte",
+                "i": "Sellerie",
+                "j": "Senf",
+                "k": "Sesamsamen",
+                "l": "Schwefeldioxid",
+                "m": "Lupinen",
+                "n": "Weichtiere"
+            },
+            additiveLegend: {
+                "1": "mit Farbstoff",
+                "2": "mit Konservierungsstoff",
+                "3": "mit Antioxidationsmittel",
+                "4": "mit Geschmacksverstärker",
+                "5": "geschwefelt",
+                "6": "geschwärzt",
+                "7": "mit Phosphat",
+                "8": "mit Milcheiweiß",
+                "9": "koffeinhaltig"
+            },
+            contact: {
+                address: "Burgerstraße 42, 12345 Berlin",
+                phone: "+49 30 12345678",
+                email: "info@adamsladen.de",
+                hours: {
+                    "Mo-Fr": "11:00 - 22:00 Uhr",
+                    "Sa": "12:00 - 23:00 Uhr",
+                    "So & Feiertage": "12:00 - 21:00 Uhr"
+                }
+            }
+        };
+
+        // Load menu data from JSON
+        async function loadMenuData() {
+            showLoading(true);
+            try {
+                // In production, replace this section with:
+                // const response = await fetch('adams-menu.json');
+                // menuData = await response.json();
+
+                // For demonstration, using the embedded data above
+                setTimeout(() => {
+                    displayMenu('all');
+                    displayContact();
+                    displayAllergenLegend();
+                    showLoading(false);
+                }, 1000);
+            } catch (error) {
+                console.error('Error loading menu data:', error);
+                showLoading(false);
+                // Show error message to user
+                document.getElementById('menu-container').innerHTML =
+                    '<p style="text-align: center; color: var(--primary-color);">Fehler beim Laden des Menüs. Bitte versuchen Sie es später erneut.</p>';
+            }
+        }
+
+        // Display menu items
+        function displayMenu(category = 'all') {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+
+            let items = [];
+            
+            if (category === 'all' || category === 'doener') {
+                items = items.concat(menuData.doener);
+            }
+            if (category === 'all' || category === 'burger') {
+                items = items.concat(menuData.burgers);
+            }
+            if (category === 'all' || category === 'chicken') {
+                items = items.concat(menuData.chicken);
+            }
+            if (category === 'all' || category === 'sides') {
+                items = items.concat(menuData.sides);
+            }
+            if (category === 'all' || category === 'specials') {
+                items = items.concat(menuData.specials);
+            }
+            if (category === 'all' || category === 'desserts') {
+                items = items.concat(menuData.desserts);
+            }
+            if (category === 'all' || category === 'drinks') {
+                items = items.concat(menuData.drinks);
+            }
+
+            items.forEach((item, index) => {
+                const menuItem = createMenuItem(item);
+                container.appendChild(menuItem);
+            });
+        }
+
+        // Create menu item element
+        function createMenuItem(item) {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+
+            // Handle different price formats
+            let priceHtml = '';
+            if (item.priceLarge) {
+                priceHtml = `<span class="price">${item.price.toFixed(2)} € / ${item.priceLarge.toFixed(2)} €</span>`;
+            } else if (item.priceCappuccino) {
+                priceHtml = `<span class="price">ab ${item.price.toFixed(2)} €</span>`;
+            } else {
+                priceHtml = `<span class="price">${item.price.toFixed(2)} €</span>`;
+            }
+
+            if (item.menuPrice) {
+                priceHtml += `<span class="menu-price">Menü: ${item.menuPrice.toFixed(2)} €</span>`;
+            }
+
+            let optionsHtml = '';
+
+            // Handle sauces
+            if (item.sauces && item.sauces.length > 0) {
+                optionsHtml += `
+                    <div class="options">
+                        <h4>Soßen zur Auswahl:</h4>
+                        <div class="sauce-list">
+                            ${item.sauces.map(sauce => `<span class="sauce-tag">${sauce}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Handle flavors
+            if (item.flavors && item.flavors.length > 0) {
+                optionsHtml += `
+                    <div class="options">
+                        <h4>Sorten:</h4>
+                        <div class="sauce-list">
+                            ${item.flavors.map(flavor => `<span class="sauce-tag">${flavor}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Handle dressings
+            if (item.dressing && item.dressing.length > 0) {
+                optionsHtml += `
+                    <div class="options">
+                        <h4>Dressing:</h4>
+                        <div class="sauce-list">
+                            ${item.dressing.map(dress => `<span class="sauce-tag">${dress}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Handle extras
+            if (item.extras && item.extras.length > 0) {
+                optionsHtml += `
+                    <div class="options">
+                        <h4>Extras:</h4>
+                        <div class="sauce-list">
+                            ${item.extras.map(extra => `<span class="sauce-tag">${extra.name} (+${extra.price.toFixed(2)} €)</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            let allergensHtml = '';
+            if (item.allergens || item.additives) {
+                let info = [];
+                if (item.additives) info.push(`Zusatzstoffe: ${item.additives}`);
+                if (item.allergens) info.push(`Allergene: ${item.allergens}`);
+                allergensHtml = `<p class="allergens">${info.join(' | ')}</p>`;
+            }
+
+            // Determine category color
+            let categoryColor = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+            if (item.category === 'doener') categoryColor = 'linear-gradient(135deg, #16a085, #1abc9c)';
+            if (item.category === 'chicken') categoryColor = 'linear-gradient(135deg, #e67e22, #f39c12)';
+            if (item.category === 'sides') categoryColor = 'linear-gradient(135deg, #f39c12, #f1c40f)';
+            if (item.category === 'desserts') categoryColor = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+            if (item.category === 'drinks') categoryColor = 'linear-gradient(135deg, #3498db, #2980b9)';
+            if (item.category === 'specials') categoryColor = 'linear-gradient(135deg, #9b59b6, #8e44ad)';
+
+            div.innerHTML = `
+                <div class="menu-item-header" style="background: ${categoryColor}">
+                    <h3 class="menu-item-title">${item.name}</h3>
+                </div>
+                <div class="menu-item-body">
+                    <p class="menu-item-description">${item.description}</p>
+                    ${item.ingredients ? `<p class="menu-item-description"><strong>Zutaten:</strong> ${item.ingredients}</p>` : ''}
+                    <div class="price-container">
+                        ${priceHtml}
+                    </div>
+                    ${optionsHtml}
+                    ${allergensHtml}
+                </div>
+            `;
+
+            return div;
+        }
+
+        // Display contact information
+        function displayContact() {
+            document.getElementById('address').textContent = menuData.contact.address;
+            document.getElementById('phone').textContent = menuData.contact.phone;
+            document.getElementById('phone').href = `tel:${menuData.contact.phone.replace(/\s/g, '')}`;
+            document.getElementById('email').textContent = menuData.contact.email;
+            document.getElementById('email').href = `mailto:${menuData.contact.email}`;
+
+            const hoursHtml = Object.entries(menuData.contact.hours)
+                .map(([day, time]) => `${day}: ${time}`)
+                .join('<br>');
+            document.getElementById('hours').innerHTML = hoursHtml;
+        }
+
+        // Display allergen legend
+        function displayAllergenLegend() {
+            const container = document.getElementById('allergen-legend');
+
+            const allergenHtml = Object.entries(menuData.allergenLegend)
+                .map(([key, value]) => `<div class="allergen-item"><strong>${key}:</strong> ${value}</div>`)
+                .join('');
+
+            const additiveHtml = Object.entries(menuData.additiveLegend)
+                .map(([key, value]) => `<div class="allergen-item"><strong>${key}:</strong> ${value}</div>`)
+                .join('');
+
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; margin-bottom: 1rem;">
+                    <strong>Allergene:</strong>
+                </div>
+                ${allergenHtml}
+                <div style="grid-column: 1/-1; margin: 1rem 0;">
+                    <strong>Zusatzstoffe:</strong>
+                </div>
+                ${additiveHtml}
+            `;
+        }
+
+        // Filter menu by category
+        function filterMenu(category) {
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Display filtered menu
+            displayMenu(category);
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Show/hide loading animation
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadMenuData();
+        });
+
+        // Add scroll effect to header
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('header');
+
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = 'var(--card-shadow)';
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>```
