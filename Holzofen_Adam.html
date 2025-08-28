@@ -32,12 +32,13 @@
         /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: rgb(164, 239, 146);
+            color: rgb(232, 249, 191);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: var(--card-shadow);
+            transition: padding 0.3s ease-in-out;
         }
 
         .header-content {
@@ -47,12 +48,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: gap 0.3s ease-in-out;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
             gap: 1rem;
+            transition: gap 0.3s ease-in-out;
         }
 
         .logo {
@@ -62,16 +65,37 @@
             background: rgb(160, 241, 159);
             padding: 5px;
             box-shadow: var(--card-shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: rotate(360deg) scale(1.1);
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
         }
 
         h1 {
             font-size: 1.8rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: font-size 0.3s ease-in-out;
+        }
+        
+        /* Scrolled Header State */
+        header.scrolled {
+            padding: 0.25rem 0;
+        }
+        
+        header.scrolled .logo {
+            width: 50px;
+            height: 50px;
+        }
+        
+        header.scrolled h1 {
+            font-size: 1.2rem;
+        }
+        
+        header.scrolled .logo-container {
+            gap: 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         nav ul {
@@ -81,7 +105,7 @@
         }
 
         nav a {
-            color: rgb(160, 241, 159);
+            color: rgb(232, 249, 191);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -108,9 +132,34 @@
             display: none;
             background: none;
             border: none;
-            color: rgb(131, 231, 107);
+            color: rgb(232, 249, 191);
             font-size: 1.5rem;
             cursor: pointer;
+        }
+        
+        /* Header Cart Icon */
+        .header-cart {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: var(--dark-color);
+            color: white;
+            font-size: 0.8rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 2px solid white;
         }
 
         /* Hero Section */
@@ -329,14 +378,24 @@
             flex-direction: column;
         }
         
-        .menu-item-body p {
+        .menu-item-body .description-wrapper {
             flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        
+        .ingredient-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .menu-item-description {
-            color: #434343;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+        .ingredient-tag {
+            background: #d1a7458e;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--dark-color);
         }
         
         .category-description {
@@ -350,9 +409,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .price {
@@ -366,13 +424,202 @@
             color: var(--success-color);
             font-weight: bold;
         }
+        
+        .item-options {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .item-options select, .item-options .menu-checkbox {
+         margin-bottom: 0.5rem;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: #1a8a4c;
+        }
 
         .allergens {
             margin-top: 0.5rem;
             font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .zusatzstoffe {
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
             color: #999;
             font-style: italic;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 2rem;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .modal-close {
+            color: #aaa;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .modal-close:hover, .modal-close:focus {
+            color: black;
+        }
+        
+        #cart-items-container .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        #cart-items-container .cart-item-details {
+            flex-grow: 1;
+        }
+        
+        #cart-items-container .cart-item-name {
+            font-weight: bold;
+        }
+        
+        #cart-items-container .cart-item-price {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        #cart-items-container .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        #cart-items-container .quantity-btn, #cart-items-container .remove-btn {
+            background: #eee;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        #cart-items-container .remove-btn {
+            background-color: #fdd;
+            color: var(--primary-color);
+        }
+        
+        #cart-total {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-secondary {
+            background-color: #ccc;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #aaa;
+        }
+        
+        /* Order Form */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        
+        #confirmation-summary {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        #confirmation-summary h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .payment-notice {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
 
         /* Contact Section */
         .contact-grid {
@@ -480,6 +727,14 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            header.scrolled h1 {
+                font-size: 1.2rem;
+            }
+            
             nav ul {
                 display: none;
                 position: absolute;
@@ -490,6 +745,7 @@
                 flex-direction: column;
                 padding: 1rem;
                 gap: 1rem;
+                box-shadow: var(--card-shadow);
             }
 
             nav ul.active {
@@ -513,38 +769,31 @@
             }
 
             .header-content {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
             }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
+            
+            /* Improved category layout for mobile */
             .menu-categories {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
                 gap: 0.5rem;
             }
 
             .category-btn {
-                font-size: 0.9rem;
-                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+                padding: 0.5rem;
+                text-align: center;
             }
         }
 
         @media (max-width: 480px) {
-            .menu-categories {
-                grid-template-columns: 1fr;
-            }
-
             .section-title {
                 font-size: 1.5rem;
             }
-
-            .price-container {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
+            
+            .modal-content {
+                margin: 5% auto;
+                width: 95%;
             }
         }
 
@@ -612,10 +861,14 @@
         <div class="header-content">
             <div class="logo-container">
                 <img src="https://raw.githubusercontent.com/Digid0t/DigiDot_4/main/Adam_img.png" alt="Adams Laden Logo" class="logo">
-                <h1>Willkommen bei Adams Holzofen</h1>
+                <h1>Adams Holzofen</h1>
             </div>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             <nav>
+                <div class="header-cart" id="cart-icon" onclick="toggleCartModal()">
+                    🛒
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
                 <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#offers">Angebote</a></li>
@@ -690,25 +943,29 @@
             <div class="contact-card">
                 <div class="contact-icon">📍</div>
                 <h3>Adresse</h3>
-                <p>Ohrdrufer Str. 21<br>99867 Gotha</p>
+                <p>Kindlebener Str. 0<br>99867 Gotha<br>(Am Ostbahnhof)</p>
             </div>
 
             <div class="contact-card">
                 <div class="contact-icon">📞</div>
                 <h3>Telefon</h3>
-                <p><a href="tel:017643678921">0176 43678921</a></p>
+                <p><a href="tel:036217390016">03621 / 7390016</a><br>
+                <a href="tel:01744737466">0174 4737466</a></p>
             </div>
 
             <div class="contact-card">
                 <div class="contact-icon">🕐</div>
                 <h3>Öffnungszeiten</h3>
-                <p>Mo-So: 10:00 - 22:00 Uhr</p>
+                <p>Mo-Sa: 11:00 - 21:30 Uhr<br>
+                So & Feiertag: 12:00 - 21:30 Uhr</p>
             </div>
 
             <div class="contact-card">
                 <div class="contact-icon">✉️</div>
-                <h3>E-Mail</h3>
-                <p><a href="mailto:info@adams-holzofen.de">info@adams-holzofen.de</a></p>
+                <h3>Online Bestellen</h3>
+                <p>Über Lieferando.de<br>
+                Mindestbestellwert außerhalb: 30€<br>
+                Liefergebühr: 3€</p>
             </div>
         </div>
     </section>
@@ -724,187 +981,284 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="toggleCartModal()">×</span>
+            <h2>Dein Warenkorb</h2>
+            <div id="cart-items-container"></div>
+            <div id="cart-total">Gesamt: 0.00 €</div>
+            <div class="modal-actions">
+                <button class="modal-btn btn-secondary" onclick="toggleCartModal()">Weiter einkaufen</button>
+                <button class="modal-btn btn-primary" id="checkout-btn" onclick="showOrderForm()">Bestellen</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Order Modal -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="toggleOrderModal()">×</span>
+            <div id="order-step-1">
+                <h2>Deine Daten</h2>
+                <form id="order-form">
+                    <div class="form-group">
+                        <label for="customer-name">Name</label>
+                        <input type="text" id="customer-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-address">Adresse</label>
+                        <input type="text" id="customer-address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Telefonnummer</label>
+                        <input type="tel" id="customer-phone" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="modal-btn btn-secondary" onclick="backToCart()">Zurück zum Warenkorb</button>
+                        <button type="submit" class="modal-btn btn-primary">Weiter zur Bestätigung</button>
+                    </div>
+                </form>
+            </div>
+            <div id="order-step-2" style="display: none;">
+                <h2>Bestellung bestätigen</h2>
+                <div id="confirmation-summary">
+                    <h4>Deine Daten:</h4>
+                    <p id="confirm-name"></p>
+                    <p id="confirm-address"></p>
+                    <p id="confirm-phone"></p>
+                    <hr>
+                    <h4>Bestellung:</h4>
+                    <div id="confirm-items"></div>
+                    <h4 id="confirm-total" style="text-align: right;"></h4>
+                </div>
+                <p class="payment-notice">Möchtest du das alles bestellen?<br>Hinweis: Nur Barzahlung bei Lieferung/Abholung möglich.</p>
+                <div class="modal-actions">
+                    <button class="modal-btn btn-secondary" onclick="backToOrderForm()">Zurück</button>
+                    <button class="modal-btn btn-primary" onclick="submitOrder()">Bestellung abschicken</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         let menuData;
+        let cart = [];
 
         // Load menu data from JSON
         async function loadMenuData() {
             showLoading(true);
             try {
-                // The JSON data is embedded here directly for demonstration.
-                // In a real application, you would use:
-                // const response = await fetch('adam.json');
-                // menuData = await response.json();
                 menuData = {
                   "kategorien": [
                     {
                       "kategorie": "Döner (Hähnchen oder Putenfleisch)",
-                      "beschreibung": "Soße wahlweise: Joghurt, Knoblauch, Kräuter, Spezialsoße oder Mangosoße",
+                      "beschreibung": "Soße wahlweise: Zaziki, Spezialsoße oder Mangosoße",
                       "produkte": [
-                        { "nr": 1, "name": "Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.5 },
-                        { "nr": 2, "name": "Kleiner Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.0 },
-                        { "nr": 3, "name": "Döner Spezial", "beschreibung": "Salat, Zwiebeln, Tomate, Weichkäse, Soße", "preis": 6.5 },
-                        { "nr": 4, "name": "Super Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Weichkäse, Soße", "preis": 6.5 },
-                        { "nr": 5, "name": "Vegetarischer Döner", "beschreibung": "Salat, Weichkäse, Soße", "preis": 5.5 },
-                        { "nr": 6, "name": "Döner Hollandaise", "beschreibung": "Salat, Zwiebeln, Ananas, Tomate, Soße", "preis": 6.5 },
-                        { "nr": 7, "name": "Vegetarische Dönerrolle", "beschreibung": "Salat, Weichkäse, Soße", "preis": 5.5 },
-                        { "nr": 8, "name": "Dönerrolle Spezial", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 7.0 },
-                        { "nr": 9, "name": "Dönerrolle", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.5 }
+                        { "nr": 1, "name": "Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.0, "zusatzstoffe": ["2", "4"], "allergene": ["a", "g", "j", "i", "k"] },
+                        { "nr": 2, "name": "Kleiner Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 5.5, "zusatzstoffe": ["2", "4", "8"], "allergene": ["g", "j", "k"] },
+                        { "nr": 3, "name": "Döner Spezial", "beschreibung": "Salat, Zwiebeln, Tomate, Weichkäse, Soße", "preis": 6.5, "zusatzstoffe": ["2", "4"], "allergene": ["a", "g", "k"] },
+                        { "nr": 4, "name": "Super Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.5, "zusatzstoffe": ["2", "4", "8"], "allergene": ["g", "j", "i", "k"] },
+                        { "nr": 5, "name": "Hawaii Döner", "beschreibung": "Salat, Zwiebeln, Ananas, Tomate, Soße", "preis": 6.5, "zusatzstoffe": ["2", "4"], "allergene": ["a", "g", "k"] },
+                        { "nr": 6, "name": "Döner Hollandaise", "beschreibung": "Salat, Soße Hollandaise", "preis": 6.5, "zusatzstoffe": ["2", "4"], "allergene": ["a", "g", "j", "i", "k"] },
+                        { "nr": 7, "name": "Vegetarischer Döner", "beschreibung": "Salat, Weichkäse, Soße", "preis": 5.0, "zusatzstoffe": [], "allergene": ["g"] },
+                        { "nr": 8, "name": "Vegetarische Dönerrolle", "beschreibung": "Salat, Weichkäse, Soße", "preis": 5.5, "zusatzstoffe": [], "allergene": ["g"] },
+                        { "nr": 9, "name": "Dönerrolle Spezial", "beschreibung": "Salat, Weichkäse, Zwiebeln, Tomate, Soße", "preis": 7.0, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 10, "name": "Dönerrolle", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.5, "zusatzstoffe": ["2", "8"], "allergene": ["g", "j"] }
                       ]
                     },
                     {
-                      "kategorie": "Döner Boxen",
+                      "kategorie": "Dönerbox",
+                      "beschreibung": "Mit Pommes und Salat",
                       "produkte": [
-                        { "nr": 11, "name": "Döner Box P", "beschreibung": "mit Pommes und Soße", "preis": 7.0 },
-                        { "nr": 12, "name": "Döner Box P nur Fleisch", "beschreibung": "nur Fleisch, mit Salat und Soße", "preis": 6.5 },
-                        { "nr": 13, "name": "Döner Box 2x", "beschreibung": "mit Pommes und Soße", "preis": 7.5 },
-                        { "nr": 14, "name": "Döner Box R", "beschreibung": "Reis und Soße", "preis": 7.5 }
+                        { "nr": 11, "name": "Döner Box Pur", "beschreibung": "nur Fleisch", "preis": 7.0, "zusatzstoffe": ["2", "9", "4"], "allergene": [] },
+                        { "nr": 12, "name": "Döner Box", "beschreibung": "mit Salat und Soße", "preis": 6.5, "zusatzstoffe": ["2", "9", "1"], "allergene": [] },
+                        { "nr": 13, "name": "Döner Box", "beschreibung": "mit Pommes und Soße", "preis": 7.5, "zusatzstoffe": ["2", "9"], "allergene": ["j"] },
+                        { "nr": 14, "name": "Döner Box", "beschreibung": "mit Reis und Soße", "preis": 7.5, "zusatzstoffe": ["2", "9", "1"], "allergene": [] }
                       ]
                     },
                     {
                       "kategorie": "Tellergerichte",
                       "produkte": [
-                        { "nr": 15, "name": "Falafel Teller", "beschreibung": "5 Stück, Salat, Pommes oder Reis, Soße/Hollandaise", "preis": 8.5 },
-                        { "nr": 16, "name": "Döner Teller", "beschreibung": "Pommes, Salat, Soße", "preis": 10.0 },
-                        { "nr": 18, "name": "Döner Teller", "beschreibung": "Bratkartoffeln, Salat, Soße", "preis": 10.0 },
-                        { "nr": 19, "name": "Döner Teller", "beschreibung": "Nudeln, Salat, Soße", "preis": 10.0 },
-                        { "nr": 20, "name": "Döner Teller", "beschreibung": "Fladenbrot, Salat, Soße", "preis": 9.5 }
+                        { "nr": 15, "name": "Falafel Teller", "beschreibung": "5 Stück, Salat, Pommes oder Reis, mit Sauce Hollandaise", "preis": 8.5, "zusatzstoffe": ["2"], "allergene": ["a", "g"] },
+                        { "nr": 16, "name": "Döner Teller", "beschreibung": "Pommes, Salat, Soße", "preis": 10.0, "zusatzstoffe": ["2", "9"], "allergene": ["j"] },
+                        { "nr": 17, "name": "Döner Teller", "beschreibung": "Reis, Salat, Soße", "preis": 10.0, "zusatzstoffe": ["2"], "allergene": ["g", "j", "k"] },
+                        { "nr": 18, "name": "Döner Teller", "beschreibung": "Bratkartoffeln, Salat, Soße", "preis": 10.0, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 19, "name": "Döner Teller", "beschreibung": "Nudeln, Salat, Soße", "preis": 10.0, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 20, "name": "Döner Teller", "beschreibung": "Fladenbrot, Salat, Soße", "preis": 9.5, "zusatzstoffe": ["2"], "allergene": ["a", "g", "j"] }
                       ]
                     },
                     {
                       "kategorie": "Döner überbacken",
                       "produkte": [
-                        { "nr": 21, "name": "Döner überbacken", "beschreibung": "mit Fladenbrot, Soße, Käse", "preis": 10.0 }
+                        { "nr": 21, "name": "Döner überbacken", "beschreibung": "mit Fladenbrot, Fleisch, Sahne, Käse", "preis": 10.0, "zusatzstoffe": ["2"], "allergene": ["a", "g"] },
+                        { "nr": 22, "name": "Döner überbacken", "beschreibung": "mit Fladenbrot, Fleisch, Sahne, Pilze, Zwiebeln, Käse", "preis": 10.0, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 23, "name": "Döner überbacken", "beschreibung": "mit Fladenbrot, Fleisch, Paprika, Zwiebeln, Currysahnesoße, Pilze, Käse", "preis": 9.0, "zusatzstoffe": ["2", "4"], "allergene": ["a", "g"] },
+                        { "nr": 24, "name": "Döner überbacken", "beschreibung": "mit Fladenbrot, Fleisch, Peperoni, Zwiebeln, Sahnesoße, Käse", "preis": 10.0, "zusatzstoffe": [], "allergene": ["a", "g"] }
                       ]
                     },
                     {
                       "kategorie": "Salate",
-                      "beschreibung": "wahlweise Essig & Öl oder Joghurtdressing",
+                      "beschreibung": "Wahlweise Essig & Öl oder Joghurt Dressing",
                       "produkte": [
-                        { "nr": 25, "name": "Gemischter Salat", "beschreibung": "Salat, Mais, Gurken, Tomaten, Mais, Rotkraut", "preis": 7.5 },
-                        { "nr": 26, "name": "Döner Salat", "beschreibung": "Salat, Zwiebeln, Tomaten, Gurken, Dönerfleisch, Weichkäse", "preis": 8.5 },
-                        { "nr": 27, "name": "Salat Mozzarella", "beschreibung": "Salat, Mozzarella, Basilikum", "preis": 8.0 },
-                        { "nr": 28, "name": "Salat Nizza", "beschreibung": "Salat, Zwiebeln, Thunfisch, Ei, Oliven, Mais", "preis": 8.0 },
-                        { "nr": 29, "name": "Salat 'Der Gesunde'", "beschreibung": "Gem. Salat, Paprika, Pilze, Mais", "preis": 9.0 }
+                        { "nr": 25, "name": "Gemischter Salat", "beschreibung": "mit Salat, Weiß-/Rotkraut, Tomaten, Gurken, Mais, Paprika", "preis": 7.5, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 26, "name": "Döner Salat", "beschreibung": "mit Salat, Zwiebeln, Weiß-/Rotkraut, Tomaten, Gurken, Dönerfleisch, Weichkäse", "preis": 8.5, "zusatzstoffe": ["2"], "allergene": ["g", "j"] },
+                        { "nr": 27, "name": "Salat Mozzarella", "beschreibung": "mit Salat, Zwiebeln, Weiß-/Rotkraut, Tomaten, Gurken, Mais, Basilikum", "preis": 8.0, "zusatzstoffe": ["2"], "allergene": ["g"] },
+                        { "nr": 28, "name": "Salat Nizza", "beschreibung": "mit Salat, Zwiebeln, Tomaten, Gurken, Thunfisch", "preis": 8.0, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 29, "name": "Salat \"Der Gesunde\"", "beschreibung": "mit gem. Salat, Auberginen, Zuccini, Paprika, Pilze, Mais", "preis": 9.0, "zusatzstoffe": ["2", "9"], "allergene": [] }
                       ]
                     },
                     {
-                      "kategorie": "Kiddy-Box & Snacks",
+                      "kategorie": "Kindergerichte & Snacks",
                       "produkte": [
-                        { "nr": 30, "name": "Kiddy Box", "beschreibung": "Pommes, Nuggets oder Dönerfleisch, Getränk, Spielzeug", "preis": 7.0 },
-                        { "nr": 31, "name": "Chicken Nuggets", "beschreibung": "15 Stück", "preis": 8.0, "zusatz": "2,g" },
-                        { "nr": 32, "name": "Portion Pommes", "beschreibung": "", "preis": 4.0 },
-                        { "nr": 33, "name": "Portion Bratkartoffeln", "beschreibung": "", "preis": 4.5 },
-                        { "nr": 34, "name": "Chicken Nuggets +", "beschreibung": "9 Chicken Nuggets, Pommes und Salat", "preis": 8.5 }
+                        { "nr": 30, "name": "Kiddy Box", "beschreibung": "mit Pommes Nuggets oder Dönerfleisch + Getränk + Spielzeug", "preis": 7.0, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 31, "name": "Chicken Nuggets", "beschreibung": "15 Stück", "preis": 8.0, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 32, "name": "Portion Pommes", "beschreibung": "", "preis": 3.5, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 33, "name": "Portion Bratkartoffeln", "beschreibung": "", "preis": 4.0, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 34, "name": "Chicken Nuggets", "beschreibung": "9 Stück", "preis": 8.5, "zusatzstoffe": ["2", "9"], "allergene": [] }
                       ]
                     },
                     {
                       "kategorie": "Mega Spezial Burger",
-                      "beschreibung": "Burger: Einzel (1 Patty 180g) oder Menü (mit Pommes & 0,33l Softdrink). Extra Patty +4€, Extra Käse +1,50€, Extra Bacon +2€",
+                      "beschreibung": "Extra Fleisch +2€ | Burger: Einzel (1 Patty 180g) oder Menü (mit Pommes & 0,33l Softdrink)",
                       "produkte": [
-                        { "nr": 35, "name": "Hamburger", "beschreibung": "Tomaten, Zwiebeln, Fleisch, Ketchup, Mayo", "preis": 8.0, "preis_menü": 12.0 },
-                        { "nr": 36, "name": "Cheeseburger Classic", "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Ketchup, Mayo", "preis": 9.0, "preis_menü": 12.5 },
-                        { "nr": 37, "name": "Cheeseburger Spezial", "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Salat, Ketchup, Mayo", "preis": 9.5, "preis_menü": 12.5 },
-                        { "nr": 38, "name": "Chiliburger", "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Jalapenos, Chilisauce", "preis": 9.0, "preis_menü": 12.5 },
-                        { "nr": 39, "name": "Dönerburger", "beschreibung": "Dönerfleisch, Salat, Tomaten, Zwiebeln, Sauce", "preis": 10.5, "preis_menü": 13.5 },
-                        { "nr": 40, "name": "Chickenburger", "beschreibung": "Mit einem Chicken Patty, Salat, Spezialsoße oder Mangosoße, Tomaten, Zwiebeln, Käse", "preis": 8.0, "preis_menü": 10.5 },
-                        { "nr": 41, "name": "Chickenburger Double", "beschreibung": "Mit 2x Chicken Patty, Salat, Spezialsoße oder Mangosoße, Tomaten, Zwiebeln, Käse", "preis": 13.5, "preis_menü": 16.5 }
+                        { "nr": 35, "name": "Hamburger", "beschreibung": "1x180g Fleisch, Tomaten, Zwiebeln, Salat, Ketchup, Mayo", "preis": 8.0, "preis_menü": 11.5, "zusatzstoffe": ["2"], "allergene": ["a", "g", "i"] },
+                        { "nr": 36, "name": "Cheeseburger Classic", "beschreibung": "Tomaten, Zwiebeln, Salat, Ketchup, Mayo, Käse", "preis": 9.0, "preis_menü": 12.0, "zusatzstoffe": ["2"], "allergene": ["a", "g"] },
+                        { "nr": 37, "name": "Cheeseburger Spezial", "beschreibung": "Tomaten, Zwiebeln, Salat, Ketchup, Spiegelei, Käse", "preis": 9.5, "preis_menü": 12.5, "zusatzstoffe": ["2", "8"], "allergene": ["g"] },
+                        { "nr": 38, "name": "Chiliburger", "beschreibung": "Tomaten, Zwiebeln, Salat, Jalapenos, Käse, Chilisoße", "preis": 9.5, "preis_menü": 12.5, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 39, "name": "Dönerburger", "beschreibung": "Tomaten, Zwiebeln, Salat, Döner, Spezialsoße, Käse", "preis": 10.5, "preis_menü": 12.5, "zusatzstoffe": ["2"], "allergene": ["a", "g"] },
+                        { "nr": 40, "name": "Chickenburger", "beschreibung": "Tomaten, Zwiebeln, Salat, Spezialsoße oder Mangosoße, Käse", "preis": 8.0, "preis_menü": 10.5, "zusatzstoffe": ["2", "1"], "allergene": ["g"] },
+                        { "nr": 41, "name": "Chickenburger Double", "beschreibung": "2 x Chicken, Tomaten, Zwiebeln, Salat, Spezialsoße oder Mangosoße, Käse", "preis": 10.5, "preis_menü": 13.5, "zusatzstoffe": ["2"], "allergene": ["a", "g"] }
                       ]
                     },
                     {
                       "kategorie": "Pasta",
-                      "beschreibung": "Alle Wunsch mit Käse überbacken +2€",
+                      "beschreibung": "Auf Wunsch mit Käse überbacken + 2€",
                       "produkte": [
-                        { "nr": 42, "name": "Pasta Napoli", "beschreibung": "Makkaroni, Tomatensoße", "preis": 7.0 },
-                        { "nr": 43, "name": "Pasta Adam", "beschreibung": "Makkaroni, Dönerfleisch, Jabsauce", "preis": 8.5 },
-                        { "nr": 44, "name": "Pasta Arrabiata", "beschreibung": "Makkaroni, scharf, Tomaten, Parmesan", "preis": 7.5 }
+                        { "nr": 42, "name": "Pasta \"Napoli\"", "beschreibung": "Makkaroni, Tomatensoße", "preis": 7.0, "zusatzstoffe": ["2"], "allergene": [] },
+                        { "nr": 43, "name": "Pasta \"Adam\"", "beschreibung": "Makkaroni, Dönerfleisch, Sahnesoße", "preis": 8.5, "zusatzstoffe": [], "allergene": ["g"] },
+                        { "nr": 44, "name": "Pasta \"Arrabiata\"", "beschreibung": "Makkaroni, Knoblauch scharf, Tomaten-Sahnesoße", "preis": 7.5, "zusatzstoffe": ["2"], "allergene": ["g"] },
+                        { "nr": 45, "name": "Tortellini ala Panna", "beschreibung": "(gefüllte Nudeln) mit Schinken in Sahnesoße", "preis": 9.5, "zusatzstoffe": ["2", "8", "9"], "allergene": ["a", "c", "g"] },
+                        { "nr": 46, "name": "Tortellini", "beschreibung": "(gefüllte Nudeln) mit Hähnchenbrust, Pilze, Brokkoli in Sahnesoße", "preis": 10.0, "zusatzstoffe": ["2", "4"], "allergene": ["g"] },
+                        { "nr": 47, "name": "Tortellini", "beschreibung": "(gefüllte Nudeln) mit Spinat, Hähnchenbrust, Pilze in Sahnesoße", "preis": 10.0, "zusatzstoffe": ["2"], "allergene": ["g"] }
                       ]
                     },
                     {
                       "kategorie": "Gratin's",
-                      "beschreibung": "Alle Wunsch mit Käse überbacken +2€",
+                      "beschreibung": "Auf Wunsch mit Käse überbacken + 2€",
                       "produkte": [
-                        { "nr": 45, "name": "Gemüseauflauf", "beschreibung": "mit Makkaroni, Sahne-Hollandaise-Soße", "preis": 9.5 },
-                        { "nr": 46, "name": "Gratin Picasso", "beschreibung": "Hähnchenbrust, Brokkoli, Spinat, Sahne-Hollandaise-Soße", "preis": 10.0 }
+                        { "nr": 48, "name": "Gemüseauflauf", "beschreibung": "Makkaroni, mit Spinat, Brokkoli, Blumenkohl in Sahne-Hollandaisesoße", "preis": 9.5, "zusatzstoffe": ["2", "8", "9"], "allergene": ["a", "g"] },
+                        { "nr": 49, "name": "Gratin Picasso", "beschreibung": "Makkaroni, mit Hähnchenbrust, Brokkoli, Spinat in Sahne-Hollandaisesoße", "preis": 10.0, "zusatzstoffe": ["2"], "allergene": ["a", "g"] }
                       ]
                     },
-                    { "kategorie": "Tortellini", "produkte": [{ "nr": 47, "name": "Tortellini", "beschreibung": "Gefüllte Nudeln, Sahnesoße", "preis": 10.0 }] },
                     {
                       "kategorie": "Bratkartoffeln mit Käse überbacken",
                       "produkte": [
-                        { "nr": 48, "name": "Bratkartoffeln Döner", "beschreibung": "Brokkoli, Spinat, Sahnesoße", "preis": 12.0 },
-                        { "nr": 49, "name": "Bratkartoffeln Döner", "beschreibung": "Pizza, Sahnesoße", "preis": 12.0 }
+                        { "nr": 50, "name": "Bratkartoffeln", "beschreibung": "Hähnchenbrust, Sahnesoße", "preis": 10.0, "zusatzstoffe": [], "allergene": ["g"] },
+                        { "nr": 51, "name": "Bratkartoffeln", "beschreibung": "Dönerfleisch, Sahnesoße", "preis": 11.0, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 52, "name": "Bratkartoffeln", "beschreibung": "Hähnchenbrust, Brokkoli, Spinat, Sahnesoße", "preis": 12.0, "zusatzstoffe": ["2", "9"], "allergene": [] },
+                        { "nr": 53, "name": "Bratkartoffelauflauf Döner", "beschreibung": "Dönerfleisch, Brokkoli, Pilze, Sahnesoße", "preis": 12.0, "zusatzstoffe": ["2"], "allergene": [] }
                       ]
                     },
                     {
-                      "kategorie": "Schnitzel",
+                      "kategorie": "Putenschnitzel",
+                      "beschreibung": "180g - Wahlweise mit Pommes oder Reis",
                       "produkte": [
-                        { "nr": 50, "name": "Putenschnitzel 180g", "beschreibung": "Pommes oder Reis", "preis": 12.0 },
-                        { "nr": 51, "name": "Zwiebelschnitzel", "beschreibung": "Salat, Sahnesoße, Zwiebeln", "preis": 10.0 },
-                        { "nr": 52, "name": "Champignon Schnitzel", "beschreibung": "Salat, Champignons, Sahnesoße", "preis": 10.0 },
-                        { "nr": 53, "name": "Schnitzel Roma", "beschreibung": "Pommes, Salat, Spezialsoße", "preis": 9.0 },
-                        { "nr": 54, "name": "Schnitzel Hawaii", "beschreibung": "Käse überbacken, Ananas, Sauce Béarnaise, Salat", "preis": 11.0 },
-                        { "nr": 55, "name": "Schnitzel Hollandaise", "beschreibung": "Sauce Hollandaise, Salat", "preis": 9.0 },
-                        { "nr": 56, "name": "Schnitzel Döner", "beschreibung": "überbacken, Sahnesoße, Salat", "preis": 10.0 }
+                        { "nr": 54, "name": "Schnitzel Roma", "beschreibung": "mit Pommes, Salat und Spezialsoße", "preis": 9.0, "zusatzstoffe": ["2"], "allergene": ["a", "g"] },
+                        { "nr": 55, "name": "Schnitzel Hawaii", "beschreibung": "mit Formschinken, Ananas, Sauce Bernaise, Käse überbacken, Salat", "preis": 10.0, "zusatzstoffe": ["2", "4"], "allergene": ["a", "c", "g"] },
+                        { "nr": 56, "name": "Schnitzel Hollandaise", "beschreibung": "mit Sauce Hollandaise und Salat", "preis": 9.0, "zusatzstoffe": ["2"], "allergene": ["g"] },
+                        { "nr": 57, "name": "Schnitzel Döner", "beschreibung": "mit Salat, Dönerfleisch, Brokkoli, Sahnesoße, Käse überbacken", "preis": 11.0, "zusatzstoffe": ["2"], "allergene": ["g"] },
+                        { "nr": 58, "name": "Champignon Schnitzel", "beschreibung": "mit Salat, Champignons, Sahnesoße", "preis": 10.0, "zusatzstoffe": ["2"], "allergene": ["a", "g"] },
+                        { "nr": 59, "name": "Zwiebel Schnitzel", "beschreibung": "mit Salat, Zwiebeln, Sahnesoße", "preis": 10.0, "zusatzstoffe": ["2"], "allergene": ["g"] }
                       ]
                     },
                     {
                       "kategorie": "Pizza",
-                      "beschreibung": "Klein: 30cm, Groß: 40cm, Extra Fleisch/Wurst +2€, Extra Käse +1,50€",
+                      "beschreibung": "Frisch und knusprig aus dem Holzofen. Klein: 30cm, Groß: 40cm, Extra Fleisch/Wurst +2€, Extra Käse +1,50€",
                       "produkte": [
-                        { "nr": 80, "name": "Pizza Gotha", "beschreibung": "Salami, Käse, Tomatensoße", "preis_30cm": 9.5, "preis_40cm": 17.0 },
-                        { "nr": 81, "name": "Pizza Pollo e Parma", "beschreibung": "Käse, Hähnchenbrust, Rucola, Grana Padano, Tomatensoße, Mozzarella", "preis_30cm": 10.5, "preis_40cm": 18.0 },
-                        { "nr": 82, "name": "Pizza Quattro Formaggi", "beschreibung": "Tomatensoße, 4 Sorten Käse", "preis_30cm": 9.0, "preis_40cm": 16.5 },
-                        { "nr": 83, "name": "Pizza Meeresfrüchte", "beschreibung": "Meeresfrüchte, frittierte Krabben, Knoblauch, Tomatensoße, Käse", "preis_30cm": 10.0, "preis_40cm": 17.5 },
-                        { "nr": 84, "name": "Pizza Die Gesunde", "beschreibung": "Käse, Rucola, Tomaten, Zucchini", "preis_30cm": 10.0, "preis_40cm": 18.0 },
-                        { "nr": 85, "name": "Pizza Savone", "beschreibung": "Tomatensoße, Käse, Champignons, Spargel, Rucola", "preis_30cm": 10.0, "preis_40cm": 18.0 },
-                        { "nr": 86, "name": "Pizza Spargel", "beschreibung": "Käse, Schinken, Spargel, Rucola", "preis_30cm": 10.0, "preis_40cm": 18.0 },
-                        { "nr": 87, "name": "Pizza Sucuk", "beschreibung": "Käse, Sucuk, Tomatensoße, Tomatenscheiben, Ei, Zwiebeln", "preis_30cm": 10.0, "preis_40cm": 18.0 }
-                      ]
-                    },
-                    {
-                      "kategorie": "Pizza Boot",
-                      "produkte": [
-                        { "nr": 88, "name": "Pizza Boot Käse", "beschreibung": "mit Käse", "preis": 5.5 },
-                        { "nr": 89, "name": "Pizza Boot Tomaten", "beschreibung": "mit Tomaten", "preis": 6.5 },
-                        { "nr": 90, "name": "Pizza Boot Sucuk", "beschreibung": "mit Sucuk", "preis": 7.5 }
+                        { "nr": 60, "name": "Pizza Margherita", "beschreibung": "Tomatensoße, viel Käse", "preis_30cm": 7.0, "preis_40cm": 14.0, "zusatzstoffe": [], "allergene": ["g"] },
+                        { "nr": 61, "name": "Pizza Salami", "beschreibung": "Tomatensoße, Salami, Käse", "preis_30cm": 8.5, "preis_40cm": 16.0, "zusatzstoffe": ["2", "10"], "allergene": ["a", "g"] },
+                        { "nr": 62, "name": "Pizza Schinken", "beschreibung": "Tomatensoße, Schinken, Käse", "preis_30cm": 8.5, "preis_40cm": 16.0, "zusatzstoffe": ["2", "10"], "allergene": ["g"] },
+                        { "nr": 63, "name": "Pizza Funghi", "beschreibung": "Tomatensoße, Pilze, Käse", "preis_30cm": 8.5, "preis_40cm": 16.0, "zusatzstoffe": ["2", "10"], "allergene": ["a", "g"] },
+                        { "nr": 64, "name": "Pizza Adam", "beschreibung": "Tomatensoße, Dönerfleisch, Käse, Spezialsoße", "preis_30cm": 10.0, "preis_40cm": 17.0, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 65, "name": "Pizza Milano", "beschreibung": "Tomatensoße, Salami, Paprika, Käse", "preis_30cm": 9.0, "preis_40cm": 16.5, "zusatzstoffe": ["2", "10"], "allergene": ["a", "g"] },
+                        { "nr": 66, "name": "Pizza Thunfisch", "beschreibung": "Tomatensoße, Thunfisch, Zwiebeln, Käse", "preis_30cm": 10.0, "preis_40cm": 17.0, "zusatzstoffe": ["2"], "allergene": ["d", "g"] },
+                        { "nr": 67, "name": "Pizza Hawaii", "beschreibung": "Tomatensoße, Formschinken, Ananas, Käse", "preis_30cm": 9.0, "preis_40cm": 16.5, "zusatzstoffe": ["2", "10"], "allergene": ["a", "g"] },
+                        { "nr": 68, "name": "Pizza Quattro Stagioni", "beschreibung": "Tomatensoße, Käse, Zwiebeln, Formschinken, Salami, Pilze", "preis_30cm": 8.5, "preis_40cm": 16.0, "zusatzstoffe": ["2", "10"], "allergene": ["a", "g"] },
+                        { "nr": 69, "name": "Pizza Speziale", "beschreibung": "Tomatensoße, Käse, Zwiebeln, Formschinken, Salami, Pilze, Paprika, Peperoni, Thunfisch, Ei", "preis_30cm": 8.5, "preis_40cm": 16.0, "zusatzstoffe": ["2", "10"], "allergene": ["a", "c", "d", "g"] },
+                        { "nr": 70, "name": "Pizza Vegetarisch", "beschreibung": "Tomatensoße, Käse, Brokkoli, Spinat, Blumenkohl, Pilze, Paprika, Zwiebeln", "preis_30cm": 9.5, "preis_40cm": 16.5, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 71, "name": "Pizza Calzone", "beschreibung": "Pizzatasche, Tomatensoße, Käse, Salami, Formschinken, Pilze", "preis_30cm": 9.0, "preis_40cm": 16.5, "zusatzstoffe": ["2", "10"], "allergene": ["a", "g"] },
+                        { "nr": 72, "name": "Pizza Calzone 2", "beschreibung": "Pizzatasche, Sauce Hollandaise, Dönerfleisch, Käse, Zwiebeln", "preis_30cm": 9.0, "preis_40cm": 17.5, "zusatzstoffe": ["2"], "allergene": ["a", "g"] },
+                        { "nr": 73, "name": "Pizza Caprese", "beschreibung": "Tomatensoße, Mozzarella fr., Tomaten, Basilikum", "preis_30cm": 9.0, "preis_40cm": 16.5, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 78, "name": "Pizza Mafioso", "beschreibung": "Tomatensoße, Käse, Formschinken, Zwiebeln, Knoblauch, Peperoni (scharf)", "preis_30cm": 9.5, "preis_40cm": 17.0, "zusatzstoffe": ["2", "10"], "allergene": ["a", "g"] },
+                        { "nr": 79, "name": "Pizza Friedenstein", "beschreibung": "Sauce Bernaise, Käse, Hähnchenbrust, Brokkoli, Mais, Hollandaise Soße", "preis_30cm": 10.0, "preis_40cm": 18.0, "zusatzstoffe": [], "allergene": ["a", "g"] }
                       ]
                     },
                     {
                       "kategorie": "Pide",
                       "produkte": [
-                        { "nr": 91, "name": "Pide mit Käse", "beschreibung": "Käse, Sauce Hollandaise", "preis": 7.5 },
-                        { "nr": 92, "name": "Pide mit Spinat", "beschreibung": "Spinat, Käse, Sauce Hollandaise", "preis": 8.0 },
-                        { "nr": 93, "name": "Pide mit Dönerfleisch", "beschreibung": "Dönerfleisch, Käse, Sauce Hollandaise", "preis": 8.0 },
-                        { "nr": 94, "name": "Pide mit Sucuk", "beschreibung": "Sucuk, Käse, Sauce Hollandaise", "preis": 8.0 }
+                        { "nr": 91, "name": "Pide mit Käse", "beschreibung": "Käse, Sauce Hollandaise", "preis": 7.5, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 92, "name": "Pide mit Spinat", "beschreibung": "Spinat, Käse, Sauce Hollandaise", "preis": 8.0, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 93, "name": "Pide mit Dönerfleisch", "beschreibung": "Dönerfleisch, Käse, Sauce Hollandaise", "preis": 8.0, "zusatzstoffe": ["2", "9"], "allergene": ["a", "g"] },
+                        { "nr": 94, "name": "Pide mit Sucuk", "beschreibung": "Sucuk, Käse, Sauce Hollandaise", "preis": 7.5, "zusatzstoffe": ["2"], "allergene": ["a", "g"] }
                       ]
                     },
                     {
-                      "kategorie": "Pizza Natur & Pizzabrot",
+                      "kategorie": "Pizza Boot",
                       "produkte": [
-                        { "nr": 95, "name": "Pizzabrot Kräuterbutter", "beschreibung": "", "preis": 5.5 },
-                        { "nr": 96, "name": "Pizzabrot Knoblauch", "beschreibung": "", "preis": 5.5 },
-                        { "nr": 97, "name": "Pizzabrot Tomatensoße", "beschreibung": "", "preis": 6.0 }
+                        { "nr": 88, "name": "Pizza Boot Käse", "beschreibung": "mit Käse", "preis": 5.5, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 89, "name": "Pizza Boot Tomaten", "beschreibung": "mit Tomaten", "preis": 6.5, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 90, "name": "Pizza Boot Sucuk", "beschreibung": "mit Sucuk", "preis": 7.5, "zusatzstoffe": ["2"], "allergene": ["a", "g"] }
+                      ]
+                    },
+                    {
+                      "kategorie": "Pizzabrot",
+                      "produkte": [
+                        { "nr": 95, "name": "Pizzabrot Kräuterbutter", "beschreibung": "", "preis": 5.5, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 96, "name": "Pizzabrot Knoblauch", "beschreibung": "", "preis": 5.5, "zusatzstoffe": [], "allergene": ["a", "g"] },
+                        { "nr": 97, "name": "Pizzabrot Tomatensoße", "beschreibung": "", "preis": 6.0, "zusatzstoffe": [], "allergene": ["a", "g"] }
                       ]
                     },
                     {
                       "kategorie": "Getränke",
-                      "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola",
+                      "beschreibung": "Cola, Fanta, Sprite, Wasser, Ayran, Uludag",
                       "produkte": [
-                        { "name": "Getränk 0,33l", "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola", "preis": 2.0 },
-                        { "name": "Getränk 1,0l", "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola", "preis": 4.0 }
+                        { "name": "Getränk 0,33l", "beschreibung": "Cola, Fanta, Sprite, Wasser, Ayran, Uludag", "preis": 2.0 },
+                        { "name": "Getränk 1,0l", "beschreibung": "Cola", "preis": 4.0 }
                       ]
                     }
                   ],
                   "zusatzstoffe": [
-                    "1 = mit Farbstoff", "2 = mit Konservierungsstoff", "3 = mit Geschmacksverstärker", "4 = geschwefelt",
-                    "5 = geschwärzt", "6 = mit Süßungsmittel", "7 = enthält eine Phenylalaninquelle", "8 = koffeinhaltig", "9 = chininhaltig"
+                    "1 = mit Farbstoff", 
+                    "2 = mit Konservierungsstoff", 
+                    "3 = mit Antioxidationsmitteln",
+                    "4 = mit Geschmacksverstärker", 
+                    "5 = geschwefelt",
+                    "6 = geschwärzt", 
+                    "7 = gewachst",
+                    "8 = mit Süßungsmitteln", 
+                    "9 = enthält eine Phenylalaninquelle",
+                    "10 = mit Phosphat",
+                    "11 = coffeinhaltig",
+                    "12 = chininhaltig"
                   ],
                   "allergene": [
-                    "a = Glutenhaltiges Getreide", "b = Krebstiere", "c = Eier", "d = Fisch", "e = Erdnüsse", "f = Soja",
-                    "g = Milch", "h = Schalenfrüchte (Nüsse)", "i = Sellerie", "j = Senf", "k = Sesam", "l = Schwefeldioxid/Sulfit",
-                    "m = Lupinen", "n = Weichtiere"
+                    "a = Glutenhaltig", 
+                    "b = Krebstiere", 
+                    "c = Eier", 
+                    "d = Fisch", 
+                    "e = Erdnüsse", 
+                    "f = Soja",
+                    "g = Milch/Laktoseerzeugnisse", 
+                    "h = Schalenfrüchte", 
+                    "i = Sellerie", 
+                    "j = Senf", 
+                    "k = Sesam", 
+                    "l = Sulfite",
+                    "m = Lupinen", 
+                    "n = Weichtiere"
                   ]
                 };
 
@@ -942,51 +1296,78 @@
             container.innerHTML = '';
             descContainer.innerHTML = '';
 
-            let categoriesToDisplay = [];
-
-            if (categoryIndex === 'all') {
-                categoriesToDisplay = menuData.kategorien;
-            } else {
-                categoriesToDisplay.push(menuData.kategorien[categoryIndex]);
-            }
+            let categoriesToDisplay = (categoryIndex === 'all') ? menuData.kategorien : [menuData.kategorien[categoryIndex]];
             
-            categoriesToDisplay.forEach(category => {
-                if(category.beschreibung){
+            categoriesToDisplay.forEach((category, catIdx) => {
+                if(category.beschreibung && categoryIndex !== 'all'){
                     const catDesc = document.createElement('p');
                     catDesc.className = 'category-description';
                     catDesc.textContent = category.beschreibung;
-                    if(categoryIndex !== 'all') {
-                       descContainer.appendChild(catDesc);
-                    }
+                    descContainer.appendChild(catDesc);
                 }
-                category.produkte.forEach(item => {
-                    const menuItem = createMenuItem(item);
+                category.produkte.forEach((item, itemIdx) => {
+                    const uniqueId = `${categoryIndex === 'all' ? catIdx : categoryIndex}-${itemIdx}`;
+                    const menuItem = createMenuItem(item, uniqueId);
                     container.appendChild(menuItem);
                 });
             });
         }
 
         // Create menu item element
-        function createMenuItem(item) {
+        function createMenuItem(item, uniqueId) {
             const div = document.createElement('div');
             div.className = 'menu-item';
+            div.id = `item-${uniqueId}`;
 
             let priceHtml = '';
+            let optionsHtml = '';
+
             if (item.preis_30cm && item.preis_40cm) {
-                priceHtml = `<span class="price">30cm: ${item.preis_30cm.toFixed(2)}€ / 40cm: ${item.preis_40cm.toFixed(2)}€</span>`;
+                priceHtml = `<span class="price">ab ${item.preis_30cm.toFixed(2)} €</span>`;
+                optionsHtml += `
+                    <select id="size-select-${uniqueId}" class="item-option-select">
+                        <option value="${item.preis_30cm}" data-name=" (30cm)">Klein (30cm) - ${item.preis_30cm.toFixed(2)} €</option>
+                        <option value="${item.preis_40cm}" data-name=" (40cm)">Groß (40cm) - ${item.preis_40cm.toFixed(2)} €</option>
+                    </select>
+                `;
             } else if (item.preis) {
                 priceHtml = `<span class="price">${item.preis.toFixed(2)} €</span>`;
             }
 
             if (item.preis_menü) {
-                priceHtml += `<span class="menu-price">Menü: ${item.preis_menü.toFixed(2)} €</span>`;
+                priceHtml += `<span class="menu-price">Menü: +${(item.preis_menü - item.preis).toFixed(2)} €</span>`;
+                optionsHtml += `
+                    <div class="menu-checkbox">
+                        <input type="checkbox" id="menu-check-${uniqueId}" data-price="${item.preis_menü - item.preis}">
+                        <label for="menu-check-${uniqueId}">Als Menü bestellen</label>
+                    </div>
+                `;
             }
             
-            let allergensHtml = '';
-            if (item.zusatz) {
-                 allergensHtml = `<p class="allergens">Zusatzstoffe: ${item.zusatz}</p>`;
+            let ingredientsHtml = '';
+            if (item.beschreibung) {
+                const ingredients = item.beschreibung.split(',').map(ing => ing.trim()).filter(ing => ing);
+                if (ingredients.length > 0) {
+                    ingredientsHtml = `
+                        <div class="ingredient-list">
+                            ${ingredients.map(ingredient => `<span class="ingredient-tag">${ingredient}</span>`).join('')}
+                        </div>
+                    `;
+                }
             }
-
+            
+            // Format allergens and additives
+            let allergensHtml = '';
+            let zusatzstoffeHtml = '';
+            
+            if (item.allergene && item.allergene.length > 0) {
+                allergensHtml = `<p class="allergens">Allergene: ${item.allergene.join(', ')}</p>`;
+            }
+            
+            if (item.zusatzstoffe && item.zusatzstoffe.length > 0) {
+                zusatzstoffeHtml = `<p class="zusatzstoffe">Zusatzstoffe: ${item.zusatzstoffe.join(', ')}</p>`;
+            }
+            
             const itemNumberHtml = item.nr ? `<span class="item-number">${item.nr}</span>` : '';
 
             div.innerHTML = `
@@ -994,14 +1375,197 @@
                     <h3 class="menu-item-title">${itemNumberHtml}${item.name}</h3>
                 </div>
                 <div class="menu-item-body">
-                    <p class="menu-item-description">${item.beschreibung || ''}</p>
+                    <div class="description-wrapper">
+                        ${ingredientsHtml}
+                    </div>
                     <div class="price-container">
                         ${priceHtml}
                     </div>
+                    <div class="item-options">
+                        ${optionsHtml}
+                    </div>
+                    <button class="add-to-cart-btn" onclick="handleAddToCart('${uniqueId}')">Hinzufügen</button>
+                    ${zusatzstoffeHtml}
                     ${allergensHtml}
                 </div>
             `;
             return div;
+        }
+        
+        function handleAddToCart(uniqueId) {
+            const itemElement = document.getElementById(`item-${uniqueId}`);
+            const titleClone = itemElement.querySelector('.menu-item-title').cloneNode(true);
+            const numberSpan = titleClone.querySelector('.item-number');
+            if (numberSpan) {
+                numberSpan.remove();
+            }
+            const name = titleClone.textContent.trim();
+            
+            let price = 0;
+            let finalName = name;
+
+            const sizeSelect = document.getElementById(`size-select-${uniqueId}`);
+            if (sizeSelect) {
+                price = parseFloat(sizeSelect.value);
+                finalName += sizeSelect.options[sizeSelect.selectedIndex].dataset.name;
+            } else {
+                const priceText = itemElement.querySelector('.price').textContent;
+                price = parseFloat(priceText.match(/(\d+[.,]\d+)/)[0].replace(',', '.'));
+            }
+
+            const menuCheck = document.getElementById(`menu-check-${uniqueId}`);
+            if (menuCheck && menuCheck.checked) {
+                price += parseFloat(menuCheck.dataset.price);
+                finalName += " (Menü)";
+            }
+            
+            addToCart({ name: finalName, price: price });
+        }
+        
+        function addToCart(item) {
+            const existingItem = cart.find(cartItem => cartItem.name === item.name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...item, quantity: 1 });
+            }
+            updateCart();
+        }
+        
+        function updateCart() {
+            const cartContainer = document.getElementById('cart-items-container');
+            const cartTotalEl = document.getElementById('cart-total');
+            const cartCountEl = document.getElementById('cart-count');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            
+            cartContainer.innerHTML = '';
+            let total = 0;
+            let count = 0;
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = '<p>Dein Warenkorb ist leer.</p>';
+                checkoutBtn.style.display = 'none';
+            } else {
+                checkoutBtn.style.display = 'block';
+                cart.forEach((item, index) => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'cart-item';
+                    itemEl.innerHTML = `
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.quantity} x ${item.price.toFixed(2)} €</div>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                            <button class="remove-btn" onclick="removeFromCart(${index})">×</button>
+                        </div>
+                    `;
+                    cartContainer.appendChild(itemEl);
+                    total += item.price * item.quantity;
+                    count += item.quantity;
+                });
+            }
+            
+            cartTotalEl.textContent = `Gesamt: ${total.toFixed(2)} €`;
+            cartCountEl.textContent = count;
+            cartCountEl.style.display = count > 0 ? 'flex' : 'none';
+        }
+        
+        function changeQuantity(index, delta) {
+            cart[index].quantity += delta;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                updateCart();
+                modal.style.display = 'block';
+            }
+        }
+        
+        function toggleOrderModal() {
+            const modal = document.getElementById('order-modal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        function showOrderForm() {
+            toggleCartModal();
+            toggleOrderModal();
+            document.getElementById('order-step-1').style.display = 'block';
+            document.getElementById('order-step-2').style.display = 'none';
+        }
+        
+        function backToCart() {
+            toggleOrderModal();
+            toggleCartModal();
+        }
+        
+        function backToOrderForm() {
+            document.getElementById('order-step-1').style.display = 'block';
+            document.getElementById('order-step-2').style.display = 'none';
+        }
+        
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('customer-name').value;
+            const address = document.getElementById('customer-address').value;
+            const phone = document.getElementById('customer-phone').value;
+            
+            document.getElementById('confirm-name').textContent = `Name: ${name}`;
+            document.getElementById('confirm-address').textContent = `Adresse: ${address}`;
+            document.getElementById('confirm-phone').textContent = `Telefon: ${phone}`;
+            
+            const confirmItemsContainer = document.getElementById('confirm-items');
+            confirmItemsContainer.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                confirmItemsContainer.innerHTML += `<p>${item.quantity}x ${item.name} - ${(item.quantity * item.price).toFixed(2)} €</p>`;
+                total += item.quantity * item.price;
+            });
+            document.getElementById('confirm-total').textContent = `Gesamt: ${total.toFixed(2)} €`;
+
+            document.getElementById('order-step-1').style.display = 'none';
+            document.getElementById('order-step-2').style.display = 'block';
+        });
+
+        function submitOrder() {
+            const orderData = {
+                customer: {
+                    name: document.getElementById('customer-name').value,
+                    address: document.getElementById('customer-address').value,
+                    phone: document.getElementById('customer-phone').value,
+                },
+                items: cart,
+                total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+                timestamp: new Date().toISOString()
+            };
+
+            console.log("Bestellung abgeschickt:", orderData);
+
+            const encodedData = btoa(JSON.stringify(orderData));
+            const targetUrl = `https://example.com/bestellbestaetigung?data=${encodedData}`;
+
+            alert(`Bestellung erfolgreich! Du wirst nun weitergeleitet.\n(In einer echten Anwendung würdest du zu ${targetUrl} weitergeleitet werden)`);
+            
+            // window.location.href = targetUrl;
+            
+            cart = [];
+            updateCart();
+            toggleOrderModal();
+            document.getElementById('order-form').reset();
         }
 
 
@@ -1085,14 +1649,12 @@
         // Add scroll effect to header
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            if (window.pageYOffset > 100) {
-                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
             } else {
-                header.style.boxShadow = 'var(--card-shadow)';
+                header.classList.remove('scrolled');
             }
         });
     </script>
 </body>
 </html>
-
-
