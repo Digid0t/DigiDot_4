@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adams Holzofen - Speisekarte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #dd9c10e3;
+            --dark-color: #2c3e50;
+            --light-color: #b5dcc4;
+            --success-color: #116f38;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #1fd35eaa;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: rgb(164, 239, 146);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--card-shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgb(160, 241, 159);
+            padding: 5px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: rgb(160, 241, 159);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: rgb(92, 217, 115);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: rgb(131, 231, 107);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://raw.githubusercontent.com/Digid0t/DigiDot_4/main/adam_haus.png') center/cover;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(94, 213, 98);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: rgba(253, 253, 253, 0.524);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .cta-button:hover {
+            background: var(--primary-color);
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-2px);
+            animation: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Menu Section */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1.5rem;
+            background: rgb(241, 231, 210);
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary-color);
+            color: rgb(232, 249, 191);
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item {
+            background: rgba(216, 234, 177, 0.976);
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .menu-item-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: rgb(235, 235, 235);
+            padding: 1rem;
+        }
+
+        .menu-item-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-item-title .item-number {
+            font-size: 0.9rem;
+            font-weight: normal;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .menu-item-body {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .menu-item-body p {
+            flex-grow: 1;
+        }
+
+        .menu-item-description {
+            color: #434343;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .category-description {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--dark-color);
+        }
+
+        .price-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .menu-price {
+            font-size: 1rem;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .allergens {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(175, 104, 23, 0.381);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .contact-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 9999;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-color);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-wrap: wrap;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .menu-categories {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                font-size: 0.9rem;
+                padding: 0.4rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .price-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Allergene Legend */
+        .allergen-legend {
+            background: #b2e767;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .allergen-legend h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .allergen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .allergen-item {
+            color: #666;
+        }
+
+        /* Animation for menu items */
+        .menu-item {
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+        .menu-item:nth-child(7) { animation-delay: 0.7s; }
+        .menu-item:nth-child(8) { animation-delay: 0.8s; }
+        .menu-item:nth-child(n+9) { animation-delay: 0.9s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Lade Menü...</p>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/Digid0t/DigiDot_4/main/Adam_img.png" alt="Adams Laden Logo" class="logo">
+                <h1>Willkommen bei Adams Holzofen</h1>
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#offers">Angebote</a></li>
+                    <li><a href="#menu">Menü</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Die besten Gerichte in Gotha-Ost</h2>
+            <p>Frisch, Lecker, Anders!</p>
+            <a href="#menu" class="cta-button">Jetzt Menü entdecken</a>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="offers" style="background: #6fdd7cb7; padding: 2rem 1rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">🔥 Aktuelle Angebote</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div style="background: rgb(236, 237, 202); padding: 1.5rem; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Montag = Burger Tag</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Alle Burger 20% günstiger!</p>
+                </div>
+                <div style="background: rgb(247, 245, 203); padding: 1.5rem; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Happy Hour</h3>
+                    <p style="font-size: 0.9rem; color: #666;">15-17 Uhr: Alle Getränke -30%</p>
+                </div>
+                <div style="background: rgb(245, 243, 204); padding: 1.5rem; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Family Sunday</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Kids Menü nur 4,90€</p>
+                </div>
+                <div style="background: rgb(238, 245, 205); padding: 1.5rem; border-radius: 15px; box-shadow: var(--card-shadow); text-align: center; border: 2px solid var(--secondary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Studenten-Rabatt</h3>
+                    <p style="font-size: 0.9rem; color: #666;">Mit Ausweis 15% auf alles!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-title">Unser Menü</h2>
+
+        <div class="menu-categories" id="menu-categories">
+            <!-- Category buttons will be loaded here dynamically -->
+        </div>
+        
+        <div id="category-description-container"></div>
+
+        <div class="menu-grid" id="menu-container">
+            <!-- Menu items will be loaded here dynamically -->
+        </div>
+
+        <div class="allergen-legend">
+            <h3>Zusatzstoffe & Allergene</h3>
+            <div class="allergen-grid" id="allergen-legend">
+                <!-- Allergen legend will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Kontakt & Öffnungszeiten</h2>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Adresse</h3>
+                <p>Ohrdrufer Str. 21<br>99867 Gotha</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Telefon</h3>
+                <p><a href="tel:017643678921">0176 43678921</a></p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Öffnungszeiten</h3>
+                <p>Mo-So: 10:00 - 22:00 Uhr</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>E-Mail</h3>
+                <p><a href="mailto:info@adams-holzofen.de">info@adams-holzofen.de</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2024 Adams Holzofen. Alle Rechte vorbehalten.</p>
+            <p>Mit ❤️ gemacht für die besten Gäste</p>
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let menuData;
+
+        // Load menu data from JSON
+        async function loadMenuData() {
+            showLoading(true);
+            try {
+                // The JSON data is embedded here directly for demonstration.
+                // In a real application, you would use:
+                // const response = await fetch('adam.json');
+                // menuData = await response.json();
+                menuData = {
+                  "kategorien": [
+                    {
+                      "kategorie": "Döner (Hähnchen oder Putenfleisch)",
+                      "beschreibung": "Soße wahlweise: Joghurt, Knoblauch, Kräuter, Spezialsoße oder Mangosoße",
+                      "produkte": [
+                        { "nr": 1, "name": "Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.5 },
+                        { "nr": 2, "name": "Kleiner Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.0 },
+                        { "nr": 3, "name": "Döner Spezial", "beschreibung": "Salat, Zwiebeln, Tomate, Weichkäse, Soße", "preis": 6.5 },
+                        { "nr": 4, "name": "Super Döner", "beschreibung": "Salat, Zwiebeln, Tomate, Weichkäse, Soße", "preis": 6.5 },
+                        { "nr": 5, "name": "Vegetarischer Döner", "beschreibung": "Salat, Weichkäse, Soße", "preis": 5.5 },
+                        { "nr": 6, "name": "Döner Hollandaise", "beschreibung": "Salat, Zwiebeln, Ananas, Tomate, Soße", "preis": 6.5 },
+                        { "nr": 7, "name": "Vegetarische Dönerrolle", "beschreibung": "Salat, Weichkäse, Soße", "preis": 5.5 },
+                        { "nr": 8, "name": "Dönerrolle Spezial", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 7.0 },
+                        { "nr": 9, "name": "Dönerrolle", "beschreibung": "Salat, Zwiebeln, Tomate, Soße", "preis": 6.5 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Döner Boxen",
+                      "produkte": [
+                        { "nr": 11, "name": "Döner Box P", "beschreibung": "mit Pommes und Soße", "preis": 7.0 },
+                        { "nr": 12, "name": "Döner Box P nur Fleisch", "beschreibung": "nur Fleisch, mit Salat und Soße", "preis": 6.5 },
+                        { "nr": 13, "name": "Döner Box 2x", "beschreibung": "mit Pommes und Soße", "preis": 7.5 },
+                        { "nr": 14, "name": "Döner Box R", "beschreibung": "Reis und Soße", "preis": 7.5 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Tellergerichte",
+                      "produkte": [
+                        { "nr": 15, "name": "Falafel Teller", "beschreibung": "5 Stück, Salat, Pommes oder Reis, Soße/Hollandaise", "preis": 8.5 },
+                        { "nr": 16, "name": "Döner Teller", "beschreibung": "Pommes, Salat, Soße", "preis": 10.0 },
+                        { "nr": 18, "name": "Döner Teller", "beschreibung": "Bratkartoffeln, Salat, Soße", "preis": 10.0 },
+                        { "nr": 19, "name": "Döner Teller", "beschreibung": "Nudeln, Salat, Soße", "preis": 10.0 },
+                        { "nr": 20, "name": "Döner Teller", "beschreibung": "Fladenbrot, Salat, Soße", "preis": 9.5 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Döner überbacken",
+                      "produkte": [
+                        { "nr": 21, "name": "Döner überbacken", "beschreibung": "mit Fladenbrot, Soße, Käse", "preis": 10.0 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Salate",
+                      "beschreibung": "wahlweise Essig & Öl oder Joghurtdressing",
+                      "produkte": [
+                        { "nr": 25, "name": "Gemischter Salat", "beschreibung": "Salat, Mais, Gurken, Tomaten, Mais, Rotkraut", "preis": 7.5 },
+                        { "nr": 26, "name": "Döner Salat", "beschreibung": "Salat, Zwiebeln, Tomaten, Gurken, Dönerfleisch, Weichkäse", "preis": 8.5 },
+                        { "nr": 27, "name": "Salat Mozzarella", "beschreibung": "Salat, Mozzarella, Basilikum", "preis": 8.0 },
+                        { "nr": 28, "name": "Salat Nizza", "beschreibung": "Salat, Zwiebeln, Thunfisch, Ei, Oliven, Mais", "preis": 8.0 },
+                        { "nr": 29, "name": "Salat 'Der Gesunde'", "beschreibung": "Gem. Salat, Paprika, Pilze, Mais", "preis": 9.0 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Kiddy-Box & Snacks",
+                      "produkte": [
+                        { "nr": 30, "name": "Kiddy Box", "beschreibung": "Pommes, Nuggets oder Dönerfleisch, Getränk, Spielzeug", "preis": 7.0 },
+                        { "nr": 31, "name": "Chicken Nuggets", "beschreibung": "15 Stück", "preis": 8.0, "zusatz": "2,g" },
+                        { "nr": 32, "name": "Portion Pommes", "beschreibung": "", "preis": 4.0 },
+                        { "nr": 33, "name": "Portion Bratkartoffeln", "beschreibung": "", "preis": 4.5 },
+                        { "nr": 34, "name": "Chicken Nuggets +", "beschreibung": "9 Chicken Nuggets, Pommes und Salat", "preis": 8.5 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Mega Spezial Burger",
+                      "beschreibung": "Burger: Einzel (1 Patty 180g) oder Menü (mit Pommes & 0,33l Softdrink). Extra Patty +4€, Extra Käse +1,50€, Extra Bacon +2€",
+                      "produkte": [
+                        { "nr": 35, "name": "Hamburger", "beschreibung": "Tomaten, Zwiebeln, Fleisch, Ketchup, Mayo", "preis": 8.0, "preis_menü": 12.0 },
+                        { "nr": 36, "name": "Cheeseburger Classic", "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Ketchup, Mayo", "preis": 9.0, "preis_menü": 12.5 },
+                        { "nr": 37, "name": "Cheeseburger Spezial", "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Salat, Ketchup, Mayo", "preis": 9.5, "preis_menü": 12.5 },
+                        { "nr": 38, "name": "Chiliburger", "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Jalapenos, Chilisauce", "preis": 9.0, "preis_menü": 12.5 },
+                        { "nr": 39, "name": "Dönerburger", "beschreibung": "Dönerfleisch, Salat, Tomaten, Zwiebeln, Sauce", "preis": 10.5, "preis_menü": 13.5 },
+                        { "nr": 40, "name": "Chickenburger", "beschreibung": "Mit einem Chicken Patty, Salat, Spezialsoße oder Mangosoße, Tomaten, Zwiebeln, Käse", "preis": 8.0, "preis_menü": 10.5 },
+                        { "nr": 41, "name": "Chickenburger Double", "beschreibung": "Mit 2x Chicken Patty, Salat, Spezialsoße oder Mangosoße, Tomaten, Zwiebeln, Käse", "preis": 13.5, "preis_menü": 16.5 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Pasta",
+                      "beschreibung": "Alle Wunsch mit Käse überbacken +2€",
+                      "produkte": [
+                        { "nr": 42, "name": "Pasta Napoli", "beschreibung": "Makkaroni, Tomatensoße", "preis": 7.0 },
+                        { "nr": 43, "name": "Pasta Adam", "beschreibung": "Makkaroni, Dönerfleisch, Jabsauce", "preis": 8.5 },
+                        { "nr": 44, "name": "Pasta Arrabiata", "beschreibung": "Makkaroni, scharf, Tomaten, Parmesan", "preis": 7.5 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Gratin's",
+                      "beschreibung": "Alle Wunsch mit Käse überbacken +2€",
+                      "produkte": [
+                        { "nr": 45, "name": "Gemüseauflauf", "beschreibung": "mit Makkaroni, Sahne-Hollandaise-Soße", "preis": 9.5 },
+                        { "nr": 46, "name": "Gratin Picasso", "beschreibung": "Hähnchenbrust, Brokkoli, Spinat, Sahne-Hollandaise-Soße", "preis": 10.0 }
+                      ]
+                    },
+                    { "kategorie": "Tortellini", "produkte": [{ "nr": 47, "name": "Tortellini", "beschreibung": "Gefüllte Nudeln, Sahnesoße", "preis": 10.0 }] },
+                    {
+                      "kategorie": "Bratkartoffeln mit Käse überbacken",
+                      "produkte": [
+                        { "nr": 48, "name": "Bratkartoffeln Döner", "beschreibung": "Brokkoli, Spinat, Sahnesoße", "preis": 12.0 },
+                        { "nr": 49, "name": "Bratkartoffeln Döner", "beschreibung": "Pizza, Sahnesoße", "preis": 12.0 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Schnitzel",
+                      "produkte": [
+                        { "nr": 50, "name": "Putenschnitzel 180g", "beschreibung": "Pommes oder Reis", "preis": 12.0 },
+                        { "nr": 51, "name": "Zwiebelschnitzel", "beschreibung": "Salat, Sahnesoße, Zwiebeln", "preis": 10.0 },
+                        { "nr": 52, "name": "Champignon Schnitzel", "beschreibung": "Salat, Champignons, Sahnesoße", "preis": 10.0 },
+                        { "nr": 53, "name": "Schnitzel Roma", "beschreibung": "Pommes, Salat, Spezialsoße", "preis": 9.0 },
+                        { "nr": 54, "name": "Schnitzel Hawaii", "beschreibung": "Käse überbacken, Ananas, Sauce Béarnaise, Salat", "preis": 11.0 },
+                        { "nr": 55, "name": "Schnitzel Hollandaise", "beschreibung": "Sauce Hollandaise, Salat", "preis": 9.0 },
+                        { "nr": 56, "name": "Schnitzel Döner", "beschreibung": "überbacken, Sahnesoße, Salat", "preis": 10.0 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Pizza",
+                      "beschreibung": "Klein: 30cm, Groß: 40cm, Extra Fleisch/Wurst +2€, Extra Käse +1,50€",
+                      "produkte": [
+                        { "nr": 80, "name": "Pizza Gotha", "beschreibung": "Salami, Käse, Tomatensoße", "preis_30cm": 9.5, "preis_40cm": 17.0 },
+                        { "nr": 81, "name": "Pizza Pollo e Parma", "beschreibung": "Käse, Hähnchenbrust, Rucola, Grana Padano, Tomatensoße, Mozzarella", "preis_30cm": 10.5, "preis_40cm": 18.0 },
+                        { "nr": 82, "name": "Pizza Quattro Formaggi", "beschreibung": "Tomatensoße, 4 Sorten Käse", "preis_30cm": 9.0, "preis_40cm": 16.5 },
+                        { "nr": 83, "name": "Pizza Meeresfrüchte", "beschreibung": "Meeresfrüchte, frittierte Krabben, Knoblauch, Tomatensoße, Käse", "preis_30cm": 10.0, "preis_40cm": 17.5 },
+                        { "nr": 84, "name": "Pizza Die Gesunde", "beschreibung": "Käse, Rucola, Tomaten, Zucchini", "preis_30cm": 10.0, "preis_40cm": 18.0 },
+                        { "nr": 85, "name": "Pizza Savone", "beschreibung": "Tomatensoße, Käse, Champignons, Spargel, Rucola", "preis_30cm": 10.0, "preis_40cm": 18.0 },
+                        { "nr": 86, "name": "Pizza Spargel", "beschreibung": "Käse, Schinken, Spargel, Rucola", "preis_30cm": 10.0, "preis_40cm": 18.0 },
+                        { "nr": 87, "name": "Pizza Sucuk", "beschreibung": "Käse, Sucuk, Tomatensoße, Tomatenscheiben, Ei, Zwiebeln", "preis_30cm": 10.0, "preis_40cm": 18.0 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Pizza Boot",
+                      "produkte": [
+                        { "nr": 88, "name": "Pizza Boot Käse", "beschreibung": "mit Käse", "preis": 5.5 },
+                        { "nr": 89, "name": "Pizza Boot Tomaten", "beschreibung": "mit Tomaten", "preis": 6.5 },
+                        { "nr": 90, "name": "Pizza Boot Sucuk", "beschreibung": "mit Sucuk", "preis": 7.5 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Pide",
+                      "produkte": [
+                        { "nr": 91, "name": "Pide mit Käse", "beschreibung": "Käse, Sauce Hollandaise", "preis": 7.5 },
+                        { "nr": 92, "name": "Pide mit Spinat", "beschreibung": "Spinat, Käse, Sauce Hollandaise", "preis": 8.0 },
+                        { "nr": 93, "name": "Pide mit Dönerfleisch", "beschreibung": "Dönerfleisch, Käse, Sauce Hollandaise", "preis": 8.0 },
+                        { "nr": 94, "name": "Pide mit Sucuk", "beschreibung": "Sucuk, Käse, Sauce Hollandaise", "preis": 8.0 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Pizza Natur & Pizzabrot",
+                      "produkte": [
+                        { "nr": 95, "name": "Pizzabrot Kräuterbutter", "beschreibung": "", "preis": 5.5 },
+                        { "nr": 96, "name": "Pizzabrot Knoblauch", "beschreibung": "", "preis": 5.5 },
+                        { "nr": 97, "name": "Pizzabrot Tomatensoße", "beschreibung": "", "preis": 6.0 }
+                      ]
+                    },
+                    {
+                      "kategorie": "Getränke",
+                      "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola",
+                      "produkte": [
+                        { "name": "Getränk 0,33l", "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola", "preis": 2.0 },
+                        { "name": "Getränk 1,0l", "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola", "preis": 4.0 }
+                      ]
+                    }
+                  ],
+                  "zusatzstoffe": [
+                    "1 = mit Farbstoff", "2 = mit Konservierungsstoff", "3 = mit Geschmacksverstärker", "4 = geschwefelt",
+                    "5 = geschwärzt", "6 = mit Süßungsmittel", "7 = enthält eine Phenylalaninquelle", "8 = koffeinhaltig", "9 = chininhaltig"
+                  ],
+                  "allergene": [
+                    "a = Glutenhaltiges Getreide", "b = Krebstiere", "c = Eier", "d = Fisch", "e = Erdnüsse", "f = Soja",
+                    "g = Milch", "h = Schalenfrüchte (Nüsse)", "i = Sellerie", "j = Senf", "k = Sesam", "l = Schwefeldioxid/Sulfit",
+                    "m = Lupinen", "n = Weichtiere"
+                  ]
+                };
+
+                setTimeout(() => {
+                    displayCategories();
+                    displayMenu('all');
+                    displayAllergenLegend();
+                    showLoading(false);
+                }, 500);
+            } catch (error) {
+                console.error('Error loading menu data:', error);
+                showLoading(false);
+                document.getElementById('menu-container').innerHTML =
+                    '<p style="text-align: center; color: var(--primary-color);">Fehler beim Laden des Menüs. Bitte versuchen Sie es später erneut.</p>';
+            }
+        }
+
+        // Display category buttons
+        function displayCategories() {
+            const container = document.getElementById('menu-categories');
+            container.innerHTML = '<button class="category-btn active" onclick="filterMenu(\'all\', this)">Alle</button>';
+            menuData.kategorien.forEach((cat, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'category-btn';
+                btn.textContent = cat.kategorie;
+                btn.onclick = () => filterMenu(index, btn);
+                container.appendChild(btn);
+            });
+        }
+        
+        // Display menu items
+        function displayMenu(categoryIndex = 'all') {
+            const container = document.getElementById('menu-container');
+            const descContainer = document.getElementById('category-description-container');
+            container.innerHTML = '';
+            descContainer.innerHTML = '';
+
+            let categoriesToDisplay = [];
+
+            if (categoryIndex === 'all') {
+                categoriesToDisplay = menuData.kategorien;
+            } else {
+                categoriesToDisplay.push(menuData.kategorien[categoryIndex]);
+            }
+            
+            categoriesToDisplay.forEach(category => {
+                if(category.beschreibung){
+                    const catDesc = document.createElement('p');
+                    catDesc.className = 'category-description';
+                    catDesc.textContent = category.beschreibung;
+                    if(categoryIndex !== 'all') {
+                       descContainer.appendChild(catDesc);
+                    }
+                }
+                category.produkte.forEach(item => {
+                    const menuItem = createMenuItem(item);
+                    container.appendChild(menuItem);
+                });
+            });
+        }
+
+        // Create menu item element
+        function createMenuItem(item) {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+
+            let priceHtml = '';
+            if (item.preis_30cm && item.preis_40cm) {
+                priceHtml = `<span class="price">30cm: ${item.preis_30cm.toFixed(2)}€ / 40cm: ${item.preis_40cm.toFixed(2)}€</span>`;
+            } else if (item.preis) {
+                priceHtml = `<span class="price">${item.preis.toFixed(2)} €</span>`;
+            }
+
+            if (item.preis_menü) {
+                priceHtml += `<span class="menu-price">Menü: ${item.preis_menü.toFixed(2)} €</span>`;
+            }
+            
+            let allergensHtml = '';
+            if (item.zusatz) {
+                 allergensHtml = `<p class="allergens">Zusatzstoffe: ${item.zusatz}</p>`;
+            }
+
+            const itemNumberHtml = item.nr ? `<span class="item-number">${item.nr}</span>` : '';
+
+            div.innerHTML = `
+                <div class="menu-item-header">
+                    <h3 class="menu-item-title">${itemNumberHtml}${item.name}</h3>
+                </div>
+                <div class="menu-item-body">
+                    <p class="menu-item-description">${item.beschreibung || ''}</p>
+                    <div class="price-container">
+                        ${priceHtml}
+                    </div>
+                    ${allergensHtml}
+                </div>
+            `;
+            return div;
+        }
+
+
+        // Display allergen legend
+        function displayAllergenLegend() {
+            const container = document.getElementById('allergen-legend');
+            container.innerHTML = '';
+
+            const allergenMap = {};
+            menuData.allergene.forEach(line => {
+                const [key, value] = line.split(' = ');
+                allergenMap[key.trim()] = value.trim();
+            });
+
+            const additiveMap = {};
+            menuData.zusatzstoffe.forEach(line => {
+                const [key, value] = line.split(' = ');
+                additiveMap[key.trim()] = value.trim();
+            });
+
+            const allergenHtml = Object.entries(allergenMap)
+                .map(([key, value]) => `<div class="allergen-item"><strong>${key}:</strong> ${value}</div>`)
+                .join('');
+
+            const additiveHtml = Object.entries(additiveMap)
+                .map(([key, value]) => `<div class="allergen-item"><strong>${key}:</strong> ${value}</div>`)
+                .join('');
+
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; margin-bottom: 1rem;">
+                    <strong>Allergene:</strong>
+                </div>
+                ${allergenHtml}
+                <div style="grid-column: 1/-1; margin: 1rem 0;">
+                    <strong>Zusatzstoffe:</strong>
+                </div>
+                ${additiveHtml}
+            `;
+        }
+
+        // Filter menu by category
+        function filterMenu(categoryIndex, buttonElement) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            buttonElement.classList.add('active');
+            displayMenu(categoryIndex);
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Show/hide loading animation
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadMenuData();
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = 'var(--card-shadow)';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
