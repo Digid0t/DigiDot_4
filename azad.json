@@ -1,593 +1,748 @@
+
 {
-  "kategorien": [
-    {
-      "kategorie": "Döner (Hähnchen oder Putenfleisch)",
-      "beschreibung": "Soße wahlweise: Joghurt, Knoblauch, Kräuter, Spezialsoße oder Mangosoße",
-      "produkte": [
+  "restaurant_name": "ADAM HOLZOFEN",
+  "slogan": "Döner Pizza Pasta Salat Burger",
+  "flyer_innen": {
+    "doener": {
+      "titel": "Döner (Hähnchen oder Putenfleisch)",
+      "hinweis": "Soße: wahlweise Zaziki oder Spezialsoße oder Mangosoße",
+      "gerichte": [
         {
-          "nr": 1,
+          "nummer": 1,
           "name": "Döner",
           "beschreibung": "Salat, Zwiebeln, Tomate, Soße",
-          "preis": 6.5
+          "preis": "6,00 €"
         },
         {
-          "nr": 2,
+          "nummer": 2,
           "name": "Kleiner Döner",
           "beschreibung": "Salat, Zwiebeln, Tomate, Soße",
-          "preis": 6.0
+          "preis": "5,50 €"
         },
         {
-          "nr": 3,
+          "nummer": 3,
           "name": "Döner Spezial",
           "beschreibung": "Salat, Zwiebeln, Tomate, Weichkäse, Soße",
-          "preis": 6.5
+          "preis": "6,50 €"
         },
         {
-          "nr": 4,
+          "nummer": 4,
           "name": "Super Döner",
-          "beschreibung": "Salat, Zwiebeln, Tomate, Weichkäse, Soße",
-          "preis": 6.5
+          "beschreibung": "Salat, Zwiebeln, Tomate, Soße",
+          "preis": "6,50 €"
         },
         {
-          "nr": 5,
+          "nummer": 5,
+          "name": "Hawaii Döner",
+          "beschreibung": "Salat, Zwiebeln, Ananas, Tomate, Soße",
+          "preis": "6,50 €"
+        },
+        {
+          "nummer": 6,
+          "name": "Döner Hollandaise",
+          "beschreibung": "Salat, Soße Hollandaise",
+          "preis": "6,50 €"
+        },
+        {
+          "nummer": 7,
           "name": "Vegetarischer Döner",
           "beschreibung": "Salat, Weichkäse, Soße",
-          "preis": 5.5
+          "preis": "5,00 €"
         },
         {
-          "nr": 6,
-          "name": "Döner Hollandaise",
-          "beschreibung": "Salat, Zwiebeln, Ananas, Tomate, Soße",
-          "preis": 6.5
-        },
-        {
-          "nr": 7,
+          "nummer": 8,
           "name": "Vegetarische Dönerrolle",
           "beschreibung": "Salat, Weichkäse, Soße",
-          "preis": 5.5
+          "preis": "5,50 €"
         },
         {
-          "nr": 8,
+          "nummer": 9,
           "name": "Dönerrolle Spezial",
-          "beschreibung": "Salat, Zwiebeln, Tomate, Soße",
-          "preis": 7.0
+          "beschreibung": "Salat, Weichkäse, Zwiebeln, Tomate, Soße",
+          "preis": "7,00 €"
         },
         {
-          "nr": 9,
+          "nummer": 10,
           "name": "Dönerrolle",
           "beschreibung": "Salat, Zwiebeln, Tomate, Soße",
-          "preis": 6.5
-        },
-        {
-          "nr": 10,
-          "name": "Dönerrolle",
-          "beschreibung": "Salat, Zwiebeln, Tomate, Soße",
-          "preis": 6.5
+          "preis": "6,50 €"
         }
       ]
     },
-    {
-      "kategorie": "Döner Boxen",
-      "produkte": [
+    "doenerbox": {
+      "titel": "Dönerbox",
+      "hinweis": "mit Pommes und Salat",
+      "gerichte": [
         {
-          "nr": 11,
-          "name": "Döner Box P",
+          "nummer": 11,
+          "name": "Döner Box Pur",
+          "beschreibung": "nur Fleisch",
+          "preis": "7,00 €"
+        },
+        {
+          "nummer": 12,
+          "name": "Döner Box",
+          "beschreibung": "mit Salat und Soße",
+          "preis": "6,50 €"
+        },
+        {
+          "nummer": 13,
+          "name": "Döner Box",
           "beschreibung": "mit Pommes und Soße",
-          "preis": 7.0
+          "preis": "7,50 €"
         },
         {
-          "nr": 12,
-          "name": "Döner Box P nur Fleisch",
-          "beschreibung": "nur Fleisch, mit Salat und Soße",
-          "preis": 6.5
-        },
-        {
-          "nr": 13,
-          "name": "Döner Box 2x",
-          "beschreibung": "mit Pommes und Soße",
-          "preis": 7.5
-        },
-        {
-          "nr": 14,
-          "name": "Döner Box R",
-          "beschreibung": "Reis und Soße",
-          "preis": 7.5
+          "nummer": 14,
+          "name": "Döner Box",
+          "beschreibung": "mit Reis und Soße",
+          "preis": "7,50 €"
         }
       ]
     },
-    {
-      "kategorie": "Tellergerichte",
-      "produkte": [
+    "teller_gerichte": {
+      "titel": "Teller Gerichte",
+      "gerichte": [
         {
-          "nr": 15,
+          "nummer": 15,
           "name": "Falafel Teller",
-          "beschreibung": "5 Stück, Salat, Pommes oder Reis, Soße/Hollandaise",
-          "preis": 8.5
+          "beschreibung": "5 Stück, Salat, Pommes oder Reis, mit Sauce Hollandaise",
+          "preis": "8,50 €"
         },
         {
-          "nr": 16,
+          "nummer": 16,
           "name": "Döner Teller",
           "beschreibung": "Pommes, Salat, Soße",
-          "preis": 10.0
+          "preis": "10,00 €"
         },
         {
-          "nr": 17,
+          "nummer": 17,
           "name": "Döner Teller",
-          "beschreibung": "Pommes, Salat, Soße",
-          "preis": 10.0
+          "beschreibung": "Reis, Salat, Soße",
+          "preis": "10,00 €"
         },
         {
-          "nr": 18,
+          "nummer": 18,
           "name": "Döner Teller",
           "beschreibung": "Bratkartoffeln, Salat, Soße",
-          "preis": 10.0
+          "preis": "10,00 €"
         },
         {
-          "nr": 19,
+          "nummer": 19,
           "name": "Döner Teller",
           "beschreibung": "Nudeln, Salat, Soße",
-          "preis": 10.0
+          "preis": "10,00 €"
         },
         {
-          "nr": 20,
+          "nummer": 20,
           "name": "Döner Teller",
           "beschreibung": "Fladenbrot, Salat, Soße",
-          "preis": 9.5
+          "preis": "9,50 €"
         }
       ]
     },
-    {
-      "kategorie": "Döner überbacken",
-      "produkte": [
+    "doener_ueberbacken": {
+      "titel": "Döner überbacken",
+      "gerichte": [
         {
-          "nr": 21,
+          "nummer": 21,
           "name": "Döner überbacken",
-          "beschreibung": "mit Fladenbrot, Soße, Käse",
-          "preis": 10.0
+          "beschreibung": "mit Fladenbrot, Fleisch, Sahne, Käse",
+          "preis": "10,00 €"
         },
         {
-          "nr": 22,
+          "nummer": 22,
           "name": "Döner überbacken",
-          "beschreibung": "mit Fladenbrot, Soße, Käse",
-          "preis": 10.0
+          "beschreibung": "mit Fladenbrot, Fleisch, Sahne, Pilze, Zwiebeln, Käse",
+          "preis": "10,00 €"
         },
         {
-          "nr": 23,
+          "nummer": 23,
           "name": "Döner überbacken",
-          "beschreibung": "mit Fladenbrot, Soße, Käse",
-          "preis": 10.0
+          "beschreibung": "mit Fladenbrot, Fleisch, Paprika, Zwiebeln, Currysahnesoße, Pilze, Käse",
+          "preis": "9,00 €"
         },
         {
-          "nr": 24,
+          "nummer": 24,
           "name": "Döner überbacken",
-          "beschreibung": "mit Fladenbrot, Soße, Käse",
-          "preis": 10.0
+          "beschreibung": "mit Fladenbrot, Fleisch, Peperoni, Zwiebeln, Sahnesoße, Käse",
+          "preis": "10,00 €"
         }
       ]
     },
-    {
-      "kategorie": "Salate",
-      "beschreibung": "wahlweise Essig & Öl oder Joghurtdressing",
-      "produkte": [
+    "salate": {
+      "titel": "Salate",
+      "hinweis": "wahlweise Essig & Öl oder Joghurt Dressing",
+      "gerichte": [
         {
-          "nr": 25,
+          "nummer": 25,
           "name": "Gemischter Salat",
-          "beschreibung": "Salat, Mais, Gurken, Tomaten, Mais, Rotkraut",
-          "preis": 7.5
+          "beschreibung": "mit Salat, Weiß-/Rotkraut, Tomaten, Gurken, Mais, Paprika",
+          "preis": "7,50 €"
         },
         {
-          "nr": 26,
+          "nummer": 26,
           "name": "Döner Salat",
-          "beschreibung": "Salat, Zwiebeln, Tomaten, Gurken, Dönerfleisch, Weichkäse",
-          "preis": 8.5
+          "beschreibung": "mit Salat, Zwiebeln, Weiß-/Rotkraut, Tomaten, Gurken, Dönerfleisch, Weichkäse",
+          "preis": "8,50 €"
         },
         {
-          "nr": 27,
+          "nummer": 27,
           "name": "Salat Mozzarella",
-          "beschreibung": "Salat, Mozzarella, Basilikum",
-          "preis": 8.0
+          "beschreibung": "mit Salat, Zwiebeln, Weiß-/Rotkraut, Tomaten, Gurken, Mais, Basilikum",
+          "preis": "8,00 €"
         },
         {
-          "nr": 28,
+          "nummer": 28,
           "name": "Salat Nizza",
-          "beschreibung": "Salat, Zwiebeln, Thunfisch, Ei, Oliven, Mais",
-          "preis": 8.0
+          "beschreibung": "mit Salat, Zwiebeln, Tomaten, Gurken, Thunfisch",
+          "preis": "8,00 €"
         },
         {
-          "nr": 29,
-          "name": "Salat 'Der Gesunde'",
-          "beschreibung": "Gem. Salat, Paprika, Pilze, Mais",
-          "preis": 9.0
+          "nummer": 29,
+          "name": "Salat \"Der Gesunde\"",
+          "beschreibung": "mit gem. Salat, Auberginen, Zuccini, Paprika, Pilze, Mais",
+          "preis": "9,00 €"
         }
       ]
     },
-    {
-      "kategorie": "Kiddy-Box & Snacks",
-      "produkte": [
+    "kindergerichte_snacks": {
+      "titel": "Kindergerichte & Snacks",
+      "gerichte": [
         {
-          "nr": 30,
+          "nummer": 30,
           "name": "Kiddy Box",
-          "beschreibung": "Pommes, Nuggets oder Dönerfleisch, Getränk, Spielzeug",
-          "preis": 7.0
+          "beschreibung": "mit Pommes Nuggets oder Dönerfleisch + Getränk + Spielzeug",
+          "preis": "7,00 €"
         },
         {
-          "nr": 31,
+          "nummer": 31,
           "name": "Chicken Nuggets",
           "beschreibung": "15 Stück",
-          "preis": 8.0,
-          "zusatz": "2,g"
+          "preis": "8,00 €"
         },
         {
-          "nr": 32,
+          "nummer": 32,
           "name": "Portion Pommes",
-          "beschreibung": "",
-          "preis": 4.0
+          "preis": "3,50 €"
         },
         {
-          "nr": 33,
+          "nummer": 33,
           "name": "Portion Bratkartoffeln",
-          "beschreibung": "",
-          "preis": 4.5
+          "preis": "4,00 €"
         },
         {
-          "nr": 34,
-          "name": "Chicken Nuggets +",
-          "beschreibung": "9 Chicken Nuggets, Pommes und Salat",
-          "preis": 8.5
+          "nummer": 34,
+          "name": "Chicken Nuggets",
+          "beschreibung": "9 Stück",
+          "preis": "8,50 €"
         }
       ]
     },
-    {
-      "kategorie": "Mega Spezial Burger",
-      "beschreibung": "Burger: Einzel (1 Patty 180g) oder Menü (mit Pommes & 0,33l Softdrink). Extra Patty +4€, Extra Käse +1,50€, Extra Bacon +2€",
-      "produkte": [
+    "mega_spezial_burger": {
+      "titel": "Mega Spezial Burger",
+      "hinweis": "Extra Fleisch +2 €",
+      "gerichte": [
         {
-          "nr": 35,
+          "nummer": 35,
           "name": "Hamburger",
-          "beschreibung": "Tomaten, Zwiebeln, Fleisch, Ketchup, Mayo",
-          "preis": 8.0,
-          "preis_menü": 12.0
+          "beschreibung": "1x180g Fleisch, Tomaten, Zwiebeln, Salat, Ketchup, Mayo",
+          "preis_einzel": "8,00 €",
+          "preis_menue": "11,50 €"
         },
         {
-          "nr": 36,
+          "nummer": 36,
           "name": "Cheeseburger Classic",
-          "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Ketchup, Mayo",
-          "preis": 9.0,
-          "preis_menü": 12.5
+          "beschreibung": "Tomaten, Zwiebeln, Salat, Ketchup, Mayo, Käse",
+          "preis_einzel": "9,00 €",
+          "preis_menue": "12,00 €"
         },
         {
-          "nr": 37,
+          "nummer": 37,
           "name": "Cheeseburger Spezial",
-          "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Salat, Ketchup, Mayo",
-          "preis": 9.5,
-          "preis_menü": 12.5
+          "beschreibung": "Tomaten, Zwiebeln, Salat, Ketchup, Spiegelei, Käse",
+          "preis_einzel": "9,50 €",
+          "preis_menue": "12,50 €"
         },
         {
-          "nr": 38,
+          "nummer": 38,
           "name": "Chiliburger",
-          "beschreibung": "Tomaten, Zwiebeln, Fleisch, Käse, Jalapenos, Chilisauce",
-          "preis": 9.0,
-          "preis_menü": 12.5
+          "beschreibung": "Tomaten, Zwiebeln, Salat, Jalapenos, Käse, Chilisoße",
+          "preis_einzel": "9,50 €",
+          "preis_menue": "12,50 €"
         },
         {
-          "nr": 39,
+          "nummer": 39,
           "name": "Dönerburger",
-          "beschreibung": "Dönerfleisch, Salat, Tomaten, Zwiebeln, Sauce",
-          "preis": 10.5,
-          "preis_menü": 13.5
+          "beschreibung": "Tomaten, Zwiebeln, Salat, Döner, Spezialsoße, Käse",
+          "preis_einzel": "10,50 €",
+          "preis_menue": "12,50 €"
         },
         {
-          "nr": 40,
+          "nummer": 40,
           "name": "Chickenburger",
-          "beschreibung": "Mit einem Chicken Patty, Salat, Spezialsoße oder Mangosoße, Tomaten, Zwiebeln, Käse",
-          "preis": 8.0,
-          "preis_menü": 10.5
+          "beschreibung": "Tomaten, Zwiebeln, Salat, Spezialsoße oder Mangosoße, Käse",
+          "preis_einzel": "8,00 €",
+          "preis_menue": "10,50 €"
         },
         {
-          "nr": 41,
+          "nummer": 41,
           "name": "Chickenburger Double",
-          "beschreibung": "Mit 2x Chicken Patty, Salat, Spezialsoße oder Mangosoße, Tomaten, Zwiebeln, Käse",
-          "preis": 13.5,
-          "preis_menü": 16.5
+          "beschreibung": "2 x Chicken, Tomaten, Zwiebeln, Salat, Spezialsoße oder Mangosoße, Käse",
+          "preis_einzel": "10,50 €",
+          "preis_menue": "13,50 €"
         }
       ]
     },
-    {
-      "kategorie": "Pasta",
-      "beschreibung": "Alle Wunsch mit Käse überbacken +2€",
-      "produkte": [
+    "pasta": {
+      "titel": "Pasta",
+      "hinweis": "auf Wunsch mit Käse überbacken + 2 €",
+      "gerichte": [
         {
-          "nr": 42,
-          "name": "Pasta Napoli",
+          "nummer": 42,
+          "name": "Pasta \"Napoli\"",
           "beschreibung": "Makkaroni, Tomatensoße",
-          "preis": 7.0
+          "preis": "7,00 €"
         },
         {
-          "nr": 43,
-          "name": "Pasta Adam",
-          "beschreibung": "Makkaroni, Dönerfleisch, Jabsauce",
-          "preis": 8.5
+          "nummer": 43,
+          "name": "Pasta \"Adam\"",
+          "beschreibung": "Makkaroni, Dönerfleisch, Sahnesoße",
+          "preis": "8,50 €"
         },
         {
-          "nr": 44,
-          "name": "Pasta Arrabiata",
-          "beschreibung": "Makkaroni, scharf, Tomaten, Parmesan",
-          "preis": 7.5
-        }
-      ]
-    },
-    {
-      "kategorie": "Gratin's",
-      "beschreibung": "Alle Wunsch mit Käse überbacken +2€",
-      "produkte": [
-        {
-          "nr": 45,
-          "name": "Gemüseauflauf",
-          "beschreibung": "mit Makkaroni, Sahne-Hollandaise-Soße",
-          "preis": 9.5
+          "nummer": 44,
+          "name": "Pasta \"Arrabiata\"",
+          "beschreibung": "Makkaroni, Knoblauch scharf, Tomaten-Sahnesoße",
+          "preis": "7,50 €"
         },
         {
-          "nr": 46,
-          "name": "Gratin Picasso",
-          "beschreibung": "Hähnchenbrust, Brokkoli, Spinat, Sahne-Hollandaise-Soße",
-          "preis": 10.0
-        }
-      ]
-    },
-    {
-      "kategorie": "Tortellini",
-      "produkte": [
+          "nummer": 45,
+          "name": "Tortellini ala Panna",
+          "beschreibung": "(gefüllte Nudeln) mit Schinken in Sahnesoße",
+          "preis": "9,50 €"
+        },
         {
-          "nr": 47,
+          "nummer": 46,
           "name": "Tortellini",
-          "beschreibung": "Gefüllte Nudeln, Sahnesoße",
-          "preis": 10.0
+          "beschreibung": "(gefüllte Nudeln) mit Hähnchenbrust, Pilze, Brokkoli in Sahnesoße",
+          "preis": "10,00 €"
+        },
+        {
+          "nummer": 47,
+          "name": "Tortellini",
+          "beschreibung": "(gefüllte Nudeln) mit Spinat, Hähnchenbrust, Pilze in Sahnesoße",
+          "preis": "10,00 €"
         }
       ]
     },
-    {
-      "kategorie": "Bratkartoffeln mit Käse überbacken",
-      "produkte": [
+    "gratins": {
+      "titel": "Gratin's",
+      "hinweis": "auf Wunsch mit Käse überbacken + 2 €",
+      "gerichte": [
         {
-          "nr": 48,
-          "name": "Bratkartoffeln Döner",
-          "beschreibung": "Brokkoli, Spinat, Sahnesoße",
-          "preis": 12.0
+          "nummer": 48,
+          "name": "Gemüseauflauf",
+          "beschreibung": "Makkaroni, mit Spinat, Brokkoli, Blumenkohl in Sahne-Hollandaisesoße",
+          "preis": "9,50 €"
         },
         {
-          "nr": 49,
-          "name": "Bratkartoffeln Döner",
-          "beschreibung": "Pizza, Sahnesoße",
-          "preis": 12.0
+          "nummer": 49,
+          "name": "Gratin Picasso",
+          "beschreibung": "Makkaroni, mit Hähnchenbrust, Brokkoli, Spinat in Sahne-Hollandaisesoße",
+          "preis": "10,00 €"
         }
       ]
     },
-    {
-      "kategorie": "Schnitzel",
-      "produkte": [
+    "bratkartoffeln_ueberbacken": {
+      "titel": "Bratkartoffeln mit Käse überbacken",
+      "gerichte": [
         {
-          "nr": 50,
-          "name": "Putenschnitzel 180g",
-          "beschreibung": "Pommes oder Reis",
-          "preis": 12.0
+          "nummer": 50,
+          "name": "Bratkartoffeln",
+          "beschreibung": "Hähnchenbrust, Sahnesoße",
+          "preis": "10,00 €"
         },
         {
-          "nr": 51,
-          "name": "Zwiebelschnitzel",
-          "beschreibung": "Salat, Sahnesoße, Zwiebeln",
-          "preis": 10.0
+          "nummer": 51,
+          "name": "Bratkartoffeln",
+          "beschreibung": "Dönerfleisch, Sahnesoße",
+          "preis": "11,00 €"
         },
         {
-          "nr": 52,
-          "name": "Champignon Schnitzel",
-          "beschreibung": "Salat, Champignons, Sahnesoße",
-          "preis": 10.0
+          "nummer": 52,
+          "name": "Bratkartoffeln",
+          "beschreibung": "Hähnchenbrust, Brokkoli, Spinat, Sahnesoße",
+          "preis": "12,00 €"
         },
         {
-          "nr": 53,
+          "nummer": 53,
+          "name": "Bratkartoffelauflauf Döner",
+          "beschreibung": "Dönerfleisch, Brokkoli, Pilze, Sahnesoße",
+          "preis": "12,00 €"
+        }
+      ]
+    },
+    "putenschnitzel": {
+      "titel": "Putenschnitzel 180g",
+      "hinweis": "Wahlweise Pommes oder Reis",
+      "gerichte": [
+        {
+          "nummer": 54,
           "name": "Schnitzel Roma",
-          "beschreibung": "Pommes, Salat, Spezialsoße",
-          "preis": 9.0
+          "beschreibung": "mit Pommes, Salat und Spezialsoße",
+          "preis": "9,00 €"
         },
         {
-          "nr": 54,
+          "nummer": 55,
           "name": "Schnitzel Hawaii",
-          "beschreibung": "Käse überbacken, Ananas, Sauce Béarnaise, Salat",
-          "preis": 11.0
+          "beschreibung": "mit Formschinken, Ananas, Sauce Bernaise, Käse überbacken, Salat",
+          "preis": "10,00 €"
         },
         {
-          "nr": 55,
+          "nummer": 56,
           "name": "Schnitzel Hollandaise",
-          "beschreibung": "Sauce Hollandaise, Salat",
-          "preis": 9.0
+          "beschreibung": "mit Sauce Hollandaise und Salat",
+          "preis": "9,00 €"
         },
         {
-          "nr": 56,
+          "nummer": 57,
           "name": "Schnitzel Döner",
-          "beschreibung": "überbacken, Sahnesoße, Salat",
-          "preis": 10.0
-        }
-      ]
-    },
-    {
-      "kategorie": "Pizza",
-      "beschreibung": "Klein: 30cm, Groß: 40cm, Extra Fleisch/Wurst +2€, Extra Käse +1,50€",
-      "produkte": [
-        {
-          "nr": 80,
-          "name": "Pizza Gotha",
-          "beschreibung": "Salami, Käse, Tomatensoße",
-          "preis_30cm": 9.5,
-          "preis_40cm": 17.0
+          "beschreibung": "mit Salat, Dönerfleisch, Brokkoli, Sahnesoße, Käse überbacken",
+          "preis": "11,00 €"
         },
         {
-          "nr": 81,
-          "name": "Pizza Pollo e Parma",
-          "beschreibung": "Käse, Hähnchenbrust, Rucola, Grana Padano, Tomatensoße, Mozzarella",
-          "preis_30cm": 10.5,
-          "preis_40cm": 18.0
+          "nummer": 58,
+          "name": "Champignon Schnitzel",
+          "beschreibung": "mit Salat, Champignons, Sahnesoße",
+          "preis": "10,00 €"
         },
         {
-          "nr": 82,
-          "name": "Pizza Quattro Formaggi",
-          "beschreibung": "Tomatensoße, 4 Sorten Käse",
-          "preis_30cm": 9.0,
-          "preis_40cm": 16.5
-        },
-        {
-          "nr": 83,
-          "name": "Pizza Meeresfrüchte",
-          "beschreibung": "Meeresfrüchte, frittierte Krabben, Knoblauch, Tomatensoße, Käse",
-          "preis_30cm": 10.0,
-          "preis_40cm": 17.5
-        },
-        {
-          "nr": 84,
-          "name": "Pizza Die Gesunde",
-          "beschreibung": "Käse, Rucola, Tomaten, Zucchini",
-          "preis_30cm": 10.0,
-          "preis_40cm": 18.0
-        },
-        {
-          "nr": 85,
-          "name": "Pizza Savone",
-          "beschreibung": "Tomatensoße, Käse, Champignons, Spargel, Rucola",
-          "preis_30cm": 10.0,
-          "preis_40cm": 18.0
-        },
-        {
-          "nr": 86,
-          "name": "Pizza Spargel",
-          "beschreibung": "Käse, Schinken, Spargel, Rucola",
-          "preis_30cm": 10.0,
-          "preis_40cm": 18.0
-        },
-        {
-          "nr": 87,
-          "name": "Pizza Sucuk",
-          "beschreibung": "Käse, Sucuk, Tomatensoße, Tomatenscheiben, Ei, Zwiebeln",
-          "preis_30cm": 10.0,
-          "preis_40cm": 18.0
-        }
-      ]
-    },
-    {
-      "kategorie": "Pizza Boot",
-      "produkte": [
-        {
-          "nr": 88,
-          "name": "Pizza Boot Käse",
-          "beschreibung": "mit Käse",
-          "preis": 5.5
-        },
-        {
-          "nr": 89,
-          "name": "Pizza Boot Tomaten",
-          "beschreibung": "mit Tomaten",
-          "preis": 6.5
-        },
-        {
-          "nr": 90,
-          "name": "Pizza Boot Sucuk",
-          "beschreibung": "mit Sucuk",
-          "preis": 7.5
-        }
-      ]
-    },
-    {
-      "kategorie": "Pide",
-      "produkte": [
-        {
-          "nr": 91,
-          "name": "Pide mit Käse",
-          "beschreibung": "Käse, Sauce Hollandaise",
-          "preis": 7.5
-        },
-        {
-          "nr": 92,
-          "name": "Pide mit Spinat",
-          "beschreibung": "Spinat, Käse, Sauce Hollandaise",
-          "preis": 8.0
-        },
-        {
-          "nr": 93,
-          "name": "Pide mit Dönerfleisch",
-          "beschreibung": "Dönerfleisch, Käse, Sauce Hollandaise",
-          "preis": 8.0
-        },
-        {
-          "nr": 94,
-          "name": "Pide mit Sucuk",
-          "beschreibung": "Sucuk, Käse, Sauce Hollandaise",
-          "preis": 8.0
-        }
-      ]
-    },
-    {
-      "kategorie": "Pizza Natur & Pizzabrot",
-      "produkte": [
-        {
-          "nr": 95,
-          "name": "Pizzabrot Kräuterbutter",
-          "beschreibung": "",
-          "preis": 5.5
-        },
-        {
-          "nr": 96,
-          "name": "Pizzabrot Knoblauch",
-          "beschreibung": "",
-          "preis": 5.5
-        },
-        {
-          "nr": 97,
-          "name": "Pizzabrot Tomatensoße",
-          "beschreibung": "",
-          "preis": 6.0
-        }
-      ]
-    },
-    {
-      "kategorie": "Getränke",
-      "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola",
-      "produkte": [
-        {
-          "name": "Getränk 0,33l",
-          "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola",
-          "preis": 2.0
-        },
-        {
-          "name": "Getränk 1,0l",
-          "beschreibung": "Fanta, Sprite, Wasser, Ayran, Uludag, Cola",
-          "preis": 4.0
+          "nummer": 59,
+          "name": "Zwiebel Schnitzel",
+          "beschreibung": "mit Salat, Zwiebeln, Sahnesoße",
+          "preis": "10,00 €"
         }
       ]
     }
-  ],
-  "zusatzstoffe": [
-    "1 = mit Farbstoff",
-    "2 = mit Konservierungsstoff",
-    "3 = mit Geschmacksverstärker",
-    "4 = geschwefelt",
-    "5 = geschwärzt",
-    "6 = mit Süßungsmittel",
-    "7 = enthält eine Phenylalaninquelle",
-    "8 = koffeinhaltig",
-    "9 = chininhaltig"
-  ],
-  "allergene": [
-    "a = Glutenhaltiges Getreide",
-    "b = Krebstiere",
-    "c = Eier",
-    "d = Fisch",
-    "e = Erdnüsse",
-    "f = Soja",
-    "g = Milch",
-    "h = Schalenfrüchte (Nüsse)",
-    "i = Sellerie",
-    "j = Senf",
-    "k = Sesam",
-    "l = Schwefeldioxid/Sulfit",
-    "m = Lupinen",
-    "n = Weichtiere"
-  ]
+  },
+  "flyer_aussen": {
+    "pizza": {
+      "titel": "Pizza",
+      "hinweis": "frisch und knusprig aus dem Holzofen. Extra Fleisch/Wurst +2 €, Extra Käse +1,50 €",
+      "gerichte": [
+        {
+          "nummer": 60,
+          "name": "Pizza Margherita",
+          "beschreibung": "Tomatensoße, viel Käse",
+          "preis_klein_30cm": "7,00 €",
+          "preis_gross_40cm": "14,00 €"
+        },
+        {
+          "nummer": 61,
+          "name": "Pizza Salami",
+          "beschreibung": "Tomatensoße, Salami, Käse",
+          "preis_klein_30cm": "8,50 €",
+          "preis_gross_40cm": "16,00 €"
+        },
+        {
+          "nummer": 62,
+          "name": "Pizza Schinken",
+          "beschreibung": "Tomatensoße, Schinken, Käse",
+          "preis_klein_30cm": "8,50 €",
+          "preis_gross_40cm": "16,00 €"
+        },
+        {
+          "nummer": 63,
+          "name": "Pizza Funghi",
+          "beschreibung": "Tomatensoße, Pilze, Käse",
+          "preis_klein_30cm": "8,50 €",
+          "preis_gross_40cm": "16,00 €"
+        },
+        {
+          "nummer": 64,
+          "name": "Pizza Adam",
+          "beschreibung": "Tomatensoße, Dönerfleisch, Käse, Spezialsoße",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "17,00 €"
+        },
+        {
+          "nummer": 65,
+          "name": "Pizza Milano",
+          "beschreibung": "Tomatensoße, Salami, Paprika, Käse",
+          "preis_klein_30cm": "9,00 €",
+          "preis_gross_40cm": "16,50 €"
+        },
+        {
+          "nummer": 66,
+          "name": "Pizza Thunfisch",
+          "beschreibung": "Tomatensoße, Thunfisch, Zwiebeln, Käse",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "17,00 €"
+        },
+        {
+          "nummer": 67,
+          "name": "Pizza Hawaii",
+          "beschreibung": "Tomatensoße, Formschinken, Ananas, Käse",
+          "preis_klein_30cm": "9,00 €",
+          "preis_gross_40cm": "16,50 €"
+        },
+        {
+          "nummer": 68,
+          "name": "Pizza Quattro Stagioni",
+          "beschreibung": "Tomatensoße, Käse, Zwiebeln, Formschinken, Salami, Pilze",
+          "preis_klein_30cm": "8,50 €",
+          "preis_gross_40cm": "16,00 €"
+        },
+        {
+          "nummer": 69,
+          "name": "Pizza Speziale",
+          "beschreibung": "Tomatensoße, Käse, Zwiebeln, Formschinken, Salami, Pilze, Paprika, Peperoni, Thunfisch, Ei",
+          "preis_klein_30cm": "8,50 €",
+          "preis_gross_40cm": "16,00 €"
+        },
+        {
+          "nummer": 70,
+          "name": "Pizza Vegetarisch",
+          "beschreibung": "Tomatensoße, Käse, Brokkoli, Spinat, Blumenkohl, Pilze, Paprika, Zwiebeln",
+          "preis_klein_30cm": "9,50 €",
+          "preis_gross_40cm": "16,50 €"
+        },
+        {
+          "nummer": 71,
+          "name": "Pizza Calzone",
+          "beschreibung": "Pizzatasche, Tomatensoße, Käse, Salami, Formschinken, Pilze",
+          "preis_klein_30cm": "9,00 €",
+          "preis_gross_40cm": "16,50 €"
+        },
+        {
+          "nummer": 72,
+          "name": "Pizza Calzone 2",
+          "beschreibung": "Pizzatasche, Sauce Hollandaise, Dönerfleisch, Käse, Zwiebeln",
+          "preis_klein_30cm": "9,00 €",
+          "preis_gross_40cm": "17,50 €"
+        },
+        {
+          "nummer": 73,
+          "name": "Pizza Caprese",
+          "beschreibung": "Tomatensoße, Mozzarella fr., Tomaten, Basilikum",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "16,50 €"
+        },
+        {
+          "nummer": 74,
+          "name": "Pizza Lachs",
+          "beschreibung": "Sauce Bernaise, Mozzarella, Lachsstreifen und Ruccola",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "17,50 €"
+        },
+        {
+          "nummer": 75,
+          "name": "Pizza Montanara",
+          "beschreibung": "Tomatensoße, Käse, Formschinken, Pilze",
+          "preis_klein_30cm": "9,00 €",
+          "preis_gross_40cm": "18,00 €"
+        },
+        {
+          "nummer": 76,
+          "name": "Pizza Chili",
+          "beschreibung": "Tomatensoße, Käse, Formschinken, Salami, Jalapenos, Oliven",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "17,00 €"
+        },
+        {
+          "nummer": 77,
+          "name": "Pizza Siebleben",
+          "beschreibung": "Tomatensoße, Käse, Formschinken, Salami, Dönerfleisch, Pilze, Spezialsoße",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "18,00 €"
+        },
+        {
+          "nummer": 78,
+          "name": "Pizza Mafioso",
+          "beschreibung": "Tomatensoße, Käse, Formschinken, Zwiebeln, Knoblauch, Peperoni (scharf)",
+          "preis_klein_30cm": "9,50 €"
+        },
+        {
+          "nummer": 79,
+          "name": "Pizza Friedenstein",
+          "beschreibung": "Sauce Bernaise, Käse, Hähnchenbrust, Brokkoli, Mais, Hollandaise Soße",
+          "preis_klein_30cm": "10,00 €"
+        },
+        {
+          "nummer": 80,
+          "name": "Pizza Gotha",
+          "beschreibung": "Tomatensoße, Käse, Salami, Pilze, Zwiebeln",
+          "preis_klein_30cm": "9,50 €",
+          "preis_gross_40cm": "17,00 €"
+        },
+        {
+          "nummer": 81,
+          "name": "Pizza Pollo e Panna",
+          "beschreibung": "Käse, Sahne-Creme fraiche Soße, Mozzarella, Spinat, Hähnchenbrust, Rucola, Grana Padano und Sauce Bernaise",
+          "preis_klein_30cm": "10,50 €",
+          "preis_gross_40cm": "18,00 €"
+        },
+        {
+          "nummer": 82,
+          "name": "Pizza Quattro Formaggi",
+          "beschreibung": "Tomatensoße, 4 Sorten Käse",
+          "preis_klein_30cm": "9,00 €",
+          "preis_gross_40cm": "16,50 €"
+        },
+        {
+          "nummer": 83,
+          "name": "Pizza Meeresfrüchte",
+          "beschreibung": "Tomatensoße, Käse, Meeresfrüchte, Knoblauch",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "18,00 €"
+        },
+        {
+          "nummer": 84,
+          "name": "Pizza \"Die Gesunde\"",
+          "beschreibung": "Tomatensoße, Käse, Auberginen, Zuccini, Paprika, Pilze, Tomaten, Mais",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "18,00 €"
+        },
+        {
+          "nummer": 85,
+          "name": "Pizza Savone",
+          "beschreibung": "Tomatensoße, Käse, Salami, Formschinken, Pilze",
+          "preis_klein_30cm": "9,50 €",
+          "preis_gross_40cm": "17,50 €"
+        },
+        {
+          "nummer": 86,
+          "name": "Pizza Spargel",
+          "beschreibung": "Sahnesoße, Käse, Formschinken, Spargel, Rucola, Hollandaisesauce",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "18,00 €"
+        },
+        {
+          "nummer": 87,
+          "name": "Pizza Sucuk",
+          "beschreibung": "Tomatensoße, Käse, türk. Wurst, Tomate, Ei, Zwiebeln",
+          "preis_klein_30cm": "10,00 €",
+          "preis_gross_40cm": "18,00 €"
+        }
+      ]
+    },
+    "pizza_brot": {
+      "titel": "Pizza Brot",
+      "gerichte": [
+        {
+          "nummer": 88,
+          "name": "Pizzabrot Natur",
+          "preis": "5,50 €"
+        },
+        {
+          "nummer": 89,
+          "name": "Pizzabrot Tomatensoße",
+          "preis": "6,00 €"
+        },
+        {
+          "nummer": 90,
+          "name": "Pizzabrot Knoblauch",
+          "preis": "6,50 €"
+        },
+        {
+          "nummer": 91,
+          "name": "Pizzabrot Kräuterbutter",
+          "preis": "6,50 €"
+        }
+      ]
+    },
+    "pide": {
+      "titel": "Pide",
+      "gerichte": [
+        {
+          "nummer": 92,  
+          "name": "Pide",  
+          "beschreibung": "mit Käse, Sauce Hollandaise",  
+          "preis": "7,50 €"  
+        },  
+        {  
+          "nummer": 93,  
+          "name": "Pide",  
+          "beschreibung": "mit Spinat, Käse, Sauce Hollandaise",  
+          "preis": "8,00 €"  
+        },  
+        {  
+          "nummer": 94,  
+          "name": "Pide",  
+          "beschreibung": "mit Dönerfleisch, Käse, Sauce Hollandaise",  
+          "preis": "8,00 €"  
+        },  
+        {  
+          "nummer": 95,  
+          "name": "Pide",  
+          "beschreibung": "mit Sucuk, Käse, Sauce Hollandaise",  
+          "preis": "7,50 €"  
+        }  
+      ]  
+    },  
+    "getraenke": {  
+      "titel": "Getränke",  
+      "liste": [  
+        {  
+          "name": "Cola, Fanta, Sprite, Wasser, Ayran, Uludag",  
+          "groesse": "0,33l",  
+          "preis": "2,00 €"  
+        },  
+        {  
+          "name": "Cola",  
+          "groesse": "1l",  
+          "preis": "4,00 €"  
+        }  
+      ]  
+    },  
+    "kontakt_und_info": {  
+      "adresse": "Kindlebener Str. 0, 99867 Gotha (Am Ostbahnhof - Wendekreis Straßenbahn)",  
+      "telefon": [  
+        "03621 / 7390016",  
+        "0174 4737466"  
+      ],  
+      "lieferinfo": {  
+        "mindestbestellwert_ausserhalb_gotha": "30 €",  
+        "liefergebuehren_ausserhalb_gotha": "3 €"  
+      },  
+      "oeffnungszeiten": {  
+        "woche": "Mo-Sa 11:00 - 21:30 Uhr",  
+        "sonn_feiertag": "So & Feiertag 12:00 - 21:30 Uhr"  
+      },  
+      "lieferzeiten": "Mo-Sa 11:00 - 21:30 Uhr",  
+      "bestellplattform": "Lieferando.de"  
+    },  
+    "zusatzstoffe_allergene": {  
+      "zusatzstoffe": [  
+        "1 mit Farbstoff",  
+        "2 mit Konservierungsstoff",  
+        "3 mit Antioxidationsmitteln",  
+        "4 mit Geschmacksverstärker",  
+        "5 geschwefelt",  
+        "6 geschwärzt",  
+        "7 gewachst",  
+        "8 mit Süßungsmitteln",  
+        "9 enthält eine Phenylalaninquelle",  
+        "10 mit Phosphat",  
+        "11 coffeinhaltig",  
+        "12 chininhaltig"  
+      ],  
+      "allergene": [  
+        "a Glutenhaltig",  
+        "b Krebstiere",  
+        "c Eier",  
+        "d Fisch",  
+        "e Erdnüsse",  
+        "f Soja",  
+        "g Milch/Laktoseerzeugnisse",  
+        "h Schalenfrüchte",  
+        "i Sellerie",  
+        "j Senf",  
+        "k Sesam",  
+        "l Sulfite",  
+        "m Lupinen",  
+        "n Weichtiere"  
+      ]  
+    }  
+  }  
 }
